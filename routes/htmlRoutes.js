@@ -11,6 +11,15 @@ module.exports = function(app) {
     });
   });
 
+    // GET route for getting all of the rooms
+    app.get("/rooms", function(req, res) {
+      // findAll returns all entries for a table when used with no options
+      db.Room.findAll({}).then(function(dbRoom) {
+        // We have access to the rooms as an argument inside of the callback function
+        res.json(dbRoom);
+      });
+    });
+    
   // Load example page and pass in an example by id
   app.get("/example/:id", function(req, res) {
     db.Example.findOne({ where: { id: req.params.id } }).then(function(dbExample) {
@@ -25,3 +34,4 @@ module.exports = function(app) {
     res.render("404");
   });
 };
+
