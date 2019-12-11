@@ -3,8 +3,8 @@ var db = require("../models");
 module.exports = function(app) {
   // Get all hotel rooms
   app.get("/api/examples", function(req, res) {
-    db.hotelRoom.findAll({}).then(function(dbExamples) {
-      res.json(dbExamples);
+    db.Room.findAll({}).then(function(dbRoom) {
+      res.json(dbRoom);
     });
   });
 

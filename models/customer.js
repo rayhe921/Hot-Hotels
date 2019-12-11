@@ -1,6 +1,12 @@
 module.exports = function(sequelize, DataTypes) {
     var Customer = sequelize.define("customer", {
-      customer_name: { 
+      firstName: { 
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+            len: [1, 25] }
+      },
+      lastName: { 
         type: DataTypes.STRING,
         allowNull: false,
         validate: {
@@ -17,7 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         validate: {
             len: [1, 15] }
       },
-      customer_email: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
         unique: true,
@@ -29,7 +35,7 @@ module.exports = function(sequelize, DataTypes) {
     },
       check_in: DataTypes.DATE,
       check_out: DataTypes.DATE,
-      beds_needed: DataTypes.INTEGER,
+      price: DataTypes.INTEGER
     })
     return Customer;
   };

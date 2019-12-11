@@ -4,10 +4,6 @@ module.exports = function(sequelize, DataTypes) {
     room_type:{
       type: DataTypes.STRING,
     },
-    vacancy: {
-      type: DataTypes.BOOLEAN,
-      default: true
-    },
     date: DataTypes.DATE,
     room_quantity: DataTypes.INTEGER,
     bed_quantity: DataTypes.INTEGER
