@@ -1,32 +1,5 @@
 var db = require("../models");
 
-<<<<<<< HEAD
-module.exports = function (app) {
-  // Load index page
-  app.get("/", function (req, res) {
-    db.Example.findAll({}).then(function (dbExamples) {
-      res.render("index", {
-        msg: "Welcome!",
-        examples: dbExamples
-      });
-    });
-  });
-
-  // GET route for getting all of the rooms
-  app.get("/rooms", function (req, res) {
-    // findAll returns all entries for a table when used with no options
-    db.Room.findAll({}).then(function (dbRoom) {
-      // We have access to the rooms as an argument inside of the callback function
-      res.json(dbRoom);
-    });
-  });
-
-  // Load example page and pass in an example by id
-  app.get("/example/:id", function (req, res) {
-    db.Example.findOne({ where: { id: req.params.id } }).then(function (dbExample) {
-      res.render("example", {
-        example: dbExample
-=======
 module.exports = function(app) {
   app.get("/rooms", function(req, res) {
     res.render("rooms");
@@ -42,7 +15,6 @@ module.exports = function(app) {
     db.Client.findOne({ where: { id: req.params.id } }).then(function(hoteldb) {
       res.render("client", {
         client: hoteldb
->>>>>>> master
       });
     });
   });
