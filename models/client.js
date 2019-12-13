@@ -12,14 +12,14 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 25]
+        len: [1, 15]
       }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
-        len: [1, 25]
+        len: [1, 15]
       }
     },
 
@@ -44,8 +44,8 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true
       }
     },
-    check_in: DataTypes.DATE,
-    check_out: DataTypes.DATE,
+    checkIn: DataTypes.DATE,
+    checkOut: DataTypes.DATE,
     price: DataTypes.INTEGER
   });
 
