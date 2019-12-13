@@ -1,4 +1,2 @@
-DROP DATABASE IF EXISTS hotel_db;
-CREATE DATABASE hotel_db;
-
-
+DROP DATABASE IF EXISTS customer;
+CREATE DATABASE customer;
