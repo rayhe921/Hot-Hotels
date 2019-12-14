@@ -3,7 +3,12 @@ var db = require("../models");
 
 module.exports = function(app) {
   // GET route for getting all of the rooms
+<<<<<<< HEAD
+  app.get("/api/dummyRooms", function(req, res) {
+    // 1. Add a join here to include all of the Clients to these Rooms
+=======
   app.get("/api/rooms", function(req, res) {
+>>>>>>> master
     db.Room.findAll({}).then(function(dbRoom) {
       res.json(dbRoom);
     });
