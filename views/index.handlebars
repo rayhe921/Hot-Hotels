@@ -54,8 +54,27 @@
             <a class="carousel-item" href="#four!"><img src="https://globalgrasshopper.com/wp-content/uploads/2018/05/Inn-at-the-market-Seattle.jpg"></a>
             <a class="carousel-item" href="#five!"><img src="https://pix10.agoda.net/geo/city/3687/1_3687_02.jpg?s=1920x822"></a>
   </div>
+      <div class="row">
+        <div class="col s3">
+          <label>Check-in Date</label>
+            <input type="text" class="datepicker" id="BeginDate">
+        </div>
+        
+        <div class="col s3">
+          <label>Check-Out Date</label>
+            <input type="text" class="datepicker" id="EndDate">
+        </div>
+        <div class="col s3">
+            <div class="input-field col s12">
+              <input disabled id="disabled" type="text" class="validate">
+              <label for="disabled">Number of Nights</label>
+        </div>
+        </div>
 
-  
+
+
+      </div>
+        
      </div>
     </div>
   
@@ -74,6 +93,20 @@
   $(document).ready(function(){
     $('.scrollspy').scrollSpy();
   });
+
+  $(document).ready(function(){
+    $('.datepicker').datepicker();
+  });
+
+  
+  $('#BeginDate').on('change', function() {
+      
+      if($('#EndDate').val() !== ""){
+        console.log($('#EndDate').val() - $('#BeginDate').val());
+      }
+      
+     
+    });
   </script>
   {{!-- <form method="get" action="/rooms">
           <button type="submit">Continue</button>
