@@ -1,3 +1,4 @@
-INSERT INTO Rooms (roomType, date, roomQuantity, roomPrice) VALUES ("single", "12/12/2019", 5, 100)
-INSERT INTO Rooms (roomType, date, roomQuantity) VALUES ("double", "12/13/2019", 5, 200)
-INSERT INTO Rooms (roomType, date, roomQuantity) VALUES ("suite", "12/14/2019", 5, 300)
+INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Standard", "WONDERFUL KING GUEST ROOM, 1 KING", "https://i.pointhacks.com/2019/04/23202609/03-W-Hotel-Singapore.jpg", 100);
+INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Standard", "SPECTACULAR KING GUEST ROOM, 1 KING, HARBOR VIEW", "https://cache.marriott.com/marriottassets/marriott/SINWH/sinwh-marvelous-suite-6144-hor-feat.jpg?downsize=1024px:*", 139);
+INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Double", "FABULOUS TWIN GUEST ROOM, 2 DOUBLE, POOL VIEW, BALCONY", "https://cache.marriott.com/marriottassets/marriott/SINWH/sinwh-fabulous-6686-hor-feat.jpg?download=2880px:*", 200);
+INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Deluxe", "EXTREME WOW SUITE KING 1 BEDROOM PRESIDENTIAL SUITE, 1 KING, BALCONY, PLUNGE POOL","http://static1.squarespace.com/static/52ccee75e4b00bc0dba03f46/52cd02c4e4b0ee5551498c4e/5b21c06f1ae6cf0f3f85737c/1528939481275/pf_act_hotel_whotel1.jpg?format=1500w", 300);
