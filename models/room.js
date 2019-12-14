@@ -6,8 +6,7 @@ module.exports = function(sequelize, DataTypes) {
       allowNull: false
     },
     description: { type: DataTypes.STRING, allowNull: false },
-    img: { type: DataTypes.STRING, allowNull: false },
-    roomQuantity: { type: DataTypes.INTEGER, allowNull: false },
+    imgUrl: { type: DataTypes.STRING, allowNull: false },
     roomCost: { type: DataTypes.INTEGER, allowNull: false }
   });
   Room.associate = function(models) {
