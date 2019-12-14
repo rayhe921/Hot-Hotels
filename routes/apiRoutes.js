@@ -1,27 +1,38 @@
 var db = require("../models");
 const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
 
+// Routes
+// =============================================================
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/clients", function(req, res) {
-    db.Client.findAll({}).then(function(hoteldb) {
-      res.json(hoteldb);
+  // GET route for getting all of the posts
+  app.get("/api/rooms/", function(req, res) {
+    db.Post.findAll({}).then(function(dbRoom) {
+      res.json(dbRoom);
     });
   });
 
-  // Create a new example
-  app.post("/api/clients", function(req, res) {
-    db.Client.create(req.body).then(function(hoteldb) {
-      res.json(hoteldb);
-    });
-  });
+  // // Get route for returning posts of a specific category
+  // app.get("/api/rooms/category/:category", function(req, res) {
+  //   db.Room.findAll({
+  //     where: {
+  //       category: req.params.category
+  //     }
+  //   }).then(function(dbRoom) {
+  //     res.json(dbRoom);
+  //   });
+  // });
 
-  // Delete an example by id
-  app.delete("/api/clients/:id", function(req, res) {
-    db.Client.destroy({ where: { id: req.params.id } }).then(function(hoteldb) {
-      res.json(hoteldb);
-    });
-  });
+  // // Get route for retrieving a single post
+  // app.get("/api/posts/:id", function(req, res) {
+  //   db.Post.findOne({
+  //     where: {
+  //       id: req.params.id
+  //     }
+  //   })
+  //     .then(function(dbPost) {
+  //       res.json(dbPost);
+  //     });
+  // });
 
   // Create a new example
   app.post("/charge", function(req, res) {
