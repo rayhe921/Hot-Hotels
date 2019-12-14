@@ -1,5 +1,5 @@
-$(document).ready(function(event){
-  $(".timepicker").timepicker(event);
+$(document).ready(function(){
+  $('.datepicker').datepicker();
 });
 
-$(".dropdown-trigger").dropdown();
+$('.dropdown-trigger').dropdown();
