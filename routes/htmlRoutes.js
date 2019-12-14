@@ -8,6 +8,9 @@ module.exports = function(app) {
   app.get("/home", function(req, res) {
     res.render("index");
   });
+  app.get("/rooms", function(req, res) {
+    res.render("room");
+  });
   // app.get("/", (req, res) => {
   //   res.render("index", {
   //     // stripePublishableKey: keys.stripePublishableKey
