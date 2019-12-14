@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Occupancy = sequelize.define("Occupancy", {
-    date: { type: DataTypes.DATETIME },
+    date: { type: DataTypes.DATE },
     occupied: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
