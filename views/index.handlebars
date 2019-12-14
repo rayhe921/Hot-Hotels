@@ -1,48 +1,57 @@
-
-  <nav class="nav-extended">
+  <nav class="nav-extended indigo darken-4">
     <div class="nav-wrapper">
       <a href="#" class="brand-logo HotHotel center"><i class="material-icons large">beach_access</i>Hot Hotel & Spa</a>
-      <a href="#" data-target="mobile-demo" class="sidenav-trigger"><i class="material-icons">menu</i></a>
-      <ul id="nav-mobile" class="right hide-on-med-and-down">
-        <li><a href="sass.html">Sass</a></li>
-        <li><a href="badges.html">Components</a></li>
-        <li><a href="collapsible.html">JavaScript</a></li>
+      <ul class="right hide-on-med-and-down">
+       
+        <li><a class="waves-effect waves-light btn-large grey">Reserve Now</a></li>
       </ul>
     </div>
-        <div class="container">
-          <div class="nav-content">
-            <ul class="tabs tabs-transparent">
-               <li class="tab"><a href="#test1">Overview</a></li>
-              <li class="tab"><a href="#test2">Photos</a></li>
-              <li class="tab"><a href="#test3">Map</a></li>
-            <li class="tab"><a href="#test4">Placeholder</a></li>
-          </ul>
-        </div>
+    <div class="container">
+
+
+    <div class="nav-content">
+      <ul class="tabs tabs-transparent">
+        <li class="tab"><a href="#test1">Overview</a></li>
+        <li class="tab"><a href="#test2">Photos</a></li>
+        <li class="tab"><a href="#test3">Map</a></li>
+        <li class="tab"><a href="#test4">Placeholder</a></li>
+      </ul>
+    </div>
     </div>
   </nav>
-
-  <ul class="sidenav" id="mobile-demo">
-    <li><a href="sass.html">Sass</a></li>
-    <li><a href="badges.html">Components</a></li>
-    <li><a href="collapsible.html">JavaScript</a></li>
-  </ul>
+  
 
 
-<div id="home">
-  <div class="container">
-      <div class="row">
-        <div class="col-8 offset-2">
+
+ <div class="parallax-container">
+      <div class="parallax"><img src="https://www.panpacificseattle.com/wp-content/uploads/2017/04/Balcony-Suite.jpg"></div>
+    </div>
+    <div class="section grey darken-3 white-text">
+      <div class="row container">
+        <h2 class="header">Are you ready to live your best life?</h2>
+          <div class="row">
+        <div class="col s-6">
+          <p class="white-text">Soak up the vibrant scene in the Living Room Bar and get in the mix with our live music and DJ series before heading to a memorable dinner at TRACE. Offering inspired seasonal fare in an award-winning atmosphere, it's a not-to-be-missed culinary experience in downtown Seattle. Work it all off the next morning at FIT®, our state-of-the-art fitness center before wandering out to explore many of the area's nearby attractions, including Pike Place Market, Pioneer Square and the Seattle Art Museum. As always, we've got you covered during your time at W Seattle with our signature Whatever/Whenever® service - your wish is truly our command.</p>
+        </div></div>
+        <p class="white-text">Parallax is an effect where the background content or image in this case, is moved at a different speed than the foreground content while scrolling.</p>
+      <p class="white-text">Soak up the vibrant scene in the Living Room Bar and get in the mix with our live music and DJ series before heading to a memorable dinner at TRACE. Offering inspired seasonal fare in an award-winning atmosphere, it's a not-to-be-missed culinary experience in downtown Seattle. Work it all off the next morning at FIT®, our state-of-the-art fitness center before wandering out to explore many of the area's nearby attractions, including Pike Place Market, Pioneer Square and the Seattle Art Museum. As always, we've got you covered during your time at W Seattle with our signature Whatever/Whenever® service - your wish is truly our command.</p>
       
-        <h2>This is our Home Page!</h2>
-
-
-        <form method="get" action="/rooms">
-          <button type="submit">Continue</button>
-        </form>
-
       </div>
     </div>
-  </div>
-</div>
+    <div class="parallax-container">
+      <div class="parallax"><img src="https://cache.marriott.com/marriottassets/marriott/SEAWI/seawi-hotel-1733-hor-feat.jpg?interpolation=progressive-bilinear&downsize=1180px:*"></div>
+    </div>
+  
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script src="/js/index.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+<script>
+
+   $(document).ready(function(){
+    $('.parallax').parallax();
+  });
+   
+  </script>
+  {{!-- <form method="get" action="/rooms">
+          <button type="submit">Continue</button>
+        </form> --}}
