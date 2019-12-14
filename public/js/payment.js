@@ -3,8 +3,6 @@ var $firstName = $("#firstName");
 var $lastName = $("#lastName");
 var $email = $("#email");
 
-
-
 // The API object contains methods for each kind of request we'll make
 var API = {
   saveClient: function(client) {
