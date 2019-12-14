@@ -16,6 +16,9 @@ module.exports = function(app) {
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
   });
+  app.get("/rooms", function(req, res) {
+    res.render("room");
+  });
   // app.get("/", (req, res) => {
   //   res.render("index", {
   //     // stripePublishableKey: keys.stripePublishableKey
