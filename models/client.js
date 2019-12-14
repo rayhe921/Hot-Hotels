@@ -1,11 +1,3 @@
-/*module.exports = function(sequelize, DataTypes) {
-  var Client = sequelize.define("Client", {
-    firstName: DataTypes.STRING,
-    lastName: DataTypes.STRING,
-    email: DataTypes.TEXT
-  });
-  return Client;
-};*/
 module.exports = function(sequelize, DataTypes) {
   var Client = sequelize.define("Client", {
     firstName: {
@@ -22,18 +14,6 @@ module.exports = function(sequelize, DataTypes) {
         len: [1, 15]
       }
     },
-
-    clientPhone: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        isNumeric: true,
-        notEmpty: true
-      },
-      validate: {
-        len: [1, 15]
-      }
-    },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -43,10 +23,7 @@ module.exports = function(sequelize, DataTypes) {
         isEmail: true,
         notEmpty: true
       }
-    },
-    checkIn: DataTypes.DATE,
-    checkOut: DataTypes.DATE,
-    price: DataTypes.INTEGER
+    }
   });
 
   Client.associate = function(models) {
