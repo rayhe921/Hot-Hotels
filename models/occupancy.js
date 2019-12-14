@@ -1,6 +1,7 @@
 module.exports = function (sequelize, DataTypes) {
   var moment = require('moment');
   var Occupancy = sequelize.define("Occupancy", {
+<<<<<<< HEAD
     date: {
       type: DataTypes.DATE,
       get: function (fieldName) {
@@ -11,10 +12,12 @@ module.exports = function (sequelize, DataTypes) {
       },
       allowNull: false
     },
+=======
+    date: { type: DataTypes.DATEONLY },
+>>>>>>> master
     occupied: {
       type: DataTypes.BOOLEAN,
-      defaultValue: false,
-      allowNull: false
+      defaultValue: false
     }
   });
 

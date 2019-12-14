@@ -1,12 +1,20 @@
 var db = require("../models");
 
 module.exports = function(app) {
+  app.get("/home", function(req, res) {
+    res.render("index");
+  });
+
   app.get("/rooms", function(req, res) {
     res.render("rooms");
   });
 
-  app.get("/home", function(req, res) {
-    res.render("index");
+  app.get("/payment", function(req, res) {
+    res.render("payment");
+  });
+
+  app.get("/thankyou", function(req, res) {
+    res.render("thankyou");
   });
   app.get("/payment", function(req, res) {
     res.render("payment");
