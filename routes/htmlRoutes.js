@@ -5,6 +5,9 @@ module.exports = function(app) {
     res.render("rooms");
   });
 
+  app.get("/home", function(req, res) {
+    res.render("index");
+  });
   // app.get("/", (req, res) => {
   //   res.render("index", {
   //     // stripePublishableKey: keys.stripePublishableKey
@@ -21,7 +24,7 @@ module.exports = function(app) {
 
   //catch-all route that leads to home.html
   app.use(function(req, res) {
-    res.render("index");
+    res.render("intro");
   });
   // Render 404 page for any unmatched routes
   app.get("*", function(req, res) {
