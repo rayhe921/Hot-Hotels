@@ -6,6 +6,6 @@
   font-family: cursive;
 }
 
-.introText{
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.introText, .HomeText{
+  font-family: Georgia, 'Times New Roman', Times, serif;
 }
