@@ -12,7 +12,7 @@
     <div class="nav-content">
       <ul class="tabs tabs-transparent">
         <li class="tab"><a href="#test1">Overview</a></li>
-        <li class="tab"><a href="#test2">Photos</a></li>
+        <li class="tab"><a href="#Photos">Photos</a></li>
         <li class="tab"><a href="#test3">Map</a></li>
         <li class="tab"><a href="#test4">Placeholder</a></li>
       </ul>
@@ -44,15 +44,16 @@
     </div>
    <div class="section white text-blue">
       <div class="row container">
-        <h2 class="header">Are you ready to live your best life?</h2>
-          <div class="row">
-            <div class="col s6">
-              <p class="white-text"><h4>TREAT YOURSELF. YOU KNOW YOU DESERVE IT</h4></p>
-            </div>
-            <div class="col s6">
-              <p class="white-text"><br>Soak up the vibrant scene in the Living Room Bar and get in the mix with our live music and DJ series before heading to a memorable dinner at HotRestaurant. Our onsite 5 star experience.</p>
-            </div>
-        </div>
+        <h2 class="header center" id="Photos">PHOTOS</h2>
+          <div class="carousel">
+            <a class="carousel-item" href="#one!"><img src="https://globalgrasshopper.com/wp-content/uploads/2018/05/W-Hotel-Seattle-1000x667.jpg"></a>
+            <a class="carousel-item" href="#two!"><img src="https://santorinidave.com/wp-content/uploads/2014/12/seattle-best-luxury-hotels-edgewater-seaview.jpg"></a>
+            <a class="carousel-item" href="#three!"><img src="https://www.edgewaterhotel.com/img/home/home_01.jpg"></a>
+            <a class="carousel-item" href="#four!"><img src="https://globalgrasshopper.com/wp-content/uploads/2018/05/Inn-at-the-market-Seattle.jpg"></a>
+            <a class="carousel-item" href="#five!"><img src="https://pix10.agoda.net/geo/city/3687/1_3687_02.jpg?s=1920x822"></a>
+  </div>
+
+  
      </div>
     </div>
   
@@ -64,7 +65,13 @@
    $(document).ready(function(){
     $('.parallax').parallax();
   });
-   
+
+   $(document).ready(function(){
+    $('.carousel').carousel();
+  });
+  $(document).ready(function(){
+    $('.scrollspy').scrollSpy();
+  });
   </script>
   {{!-- <form method="get" action="/rooms">
           <button type="submit">Continue</button>
