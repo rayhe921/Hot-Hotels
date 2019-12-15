@@ -1,38 +1,16 @@
 var db = require("../models");
 const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
 
-// Routes
-// =============================================================
+
 module.exports = function(app) {
-  // GET route for getting all of the posts
-  app.get("/api/rooms/", function(req, res) {
-    db.Post.findAll({}).then(function(dbRoom) {
-      res.json(dbRoom);
+  app.get("/api/rooms", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Room.findAll({}).then(function(dbhotel) {
+      res.json(dbhotel);
     });
   });
-
-  // // Get route for returning posts of a specific category
-  // app.get("/api/rooms/category/:category", function(req, res) {
-  //   db.Room.findAll({
-  //     where: {
-  //       category: req.params.category
-  //     }
-  //   }).then(function(dbRoom) {
-  //     res.json(dbRoom);
-  //   });
-  // });
-
-  // // Get route for retrieving a single post
-  // app.get("/api/posts/:id", function(req, res) {
-  //   db.Post.findOne({
-  //     where: {
-  //       id: req.params.id
-  //     }
-  //   })
-  //     .then(function(dbPost) {
-  //       res.json(dbPost);
-  //     });
-  // });
 
   // Create a new example
   app.post("/charge", function(req, res) {
