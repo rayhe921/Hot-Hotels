@@ -1,89 +1,38 @@
-// $(document).ready(function() {
-//   // blogContainer holds all of our posts
-//   var roomContainer = $("#RoomsAval");
-//   var roomCategorySelect = $("#category");
-//   // Click events for the edit and delete buttons
-//   $(document).on("click", "button.edit", handleRoomEdit);
-//   roomCategorySelect.on("change", handleCategoryChange);
-//   var rooms;
+var API = {
+  getRooms: function() {
+    return $.ajax({
+      url: "/dummyRooms",
+      type: "GET"
+    });
+  }
+};
 
-//   // This function grabs posts from the database and updates the view
-//   function getRooms(category) {
-//     var categoryString = category || "";
-//     if (categoryString) {
-//       categoryString = "/category/" + categoryString;
-//     }
-//     $.get("/api/dummyRooms" + categoryString, function(data) {
-//       console.log("dummyRooms", data);
-//       rooms = data;
-//       if (!rooms || !rooms.length) {
-//         displayEmpty();
-//       } else {
-//         initializeRows();
-//       }
-//     });
-//   }
-//   // Getting the initial list of posts
-//   getRooms();
-//   // InitializeRows handles appending all of our constructed post HTML inside
-//   // blogContainer
-//   function initializeRows() {
-//     roomContainer.empty();
-//     var roomsToAdd = [];
-//     for (var i = 0; i < rooms.length; i++) {
-//       roomsToAdd.push(createNewRow(rooms[i]));
-//     }
-//     roomContainer.append(roomsToAdd);
-//   }
+var refreshRooms = function() {
+  API.getRooms().then(function(data) {
+    var $rooms = data.map(function(room) {
+      var $a = $("<a>")
+        .text(room.id)
+        .attr("href", "/room/" + room.roomType);
 
-//   // This function constructs a post's HTML
-//   function createNewRow(room) {
-//     var newRoomCard = $("<div>");
-//     newRoomCard.addClass("room");
-//     var newRoomCardHeading = $("<div>");
-//     newRoomCardHeading.addClass("card-header");
-//     var editBtn = $("<button>");
-//     editBtn.text("EDIT");
-//     editBtn.addClass("edit btn btn-default");
-//     var newRoomTitle = $("<h2>");
-//     var newRoomCategory = $("<h5>");
-//     newRoomCategory.text(room.category);
-//     newRoomCategory.css({
-//       float: "right",
-//       "font-weight": "700",
-//       "margin-top": "-15px"
-//     });
-//     var newRoomCardBody = $("<div>");
-//     newRoomCardBody.addClass("card-body");
-//     var newRoomBody = $("<p>");
-//     newRoomTitle.text(room.title + " ");
-//     newRoomBody.text(room.body);
-//     newRoomCardHeading.append(editBtn);
-//     newRoomCardHeading.append(newRoomTitle);
-//     newRoomCardHeading.append(newRoomCategory);
-//     newRoomCardBody.append(newRoomBody);
-//     newRoomCard.append(newRoomCardHeading);
-//     newRoomCard.append(newRoomCardBody);
-//     newRoomCard.data("room", room);
-//     return newRoomCard;
-//   }
+      var $li = $("<li>")
+        .attr({
+          class: "list-group-item",
+          "data-id": room.roomType
+        })
+        .append($a);
 
-//   function handleRoomEdit() {
-//     var currentPost = $(this)
-//       .parent()
-//       .parent()
-//       .data("post");
-//     window.location.href = "/dummyRooms?room_id=" + currentPost.id;
-//   }
+      var $button = $("<button>")
+        .addClass("btn btn-danger float-right delete")
+        .text("ｘ");
 
-//   // This function figures out which post we want to edit and takes it to the
-//   // Appropriate url
+      $li.append($button);
 
-//   // This function displays a message when there are no posts
+      return $li;
+    });
 
-//   // This function handles reloading new posts when the category changes
-//   function handleCategoryChange() {
-//     var newRoomCategory = $(this).val();
-//     getRooms(newRoomCategory);
-//   }
-// });
+    $roomList.empty();
+    $roomList.append($rooms);
+  });
+};
+
+refreshRooms();

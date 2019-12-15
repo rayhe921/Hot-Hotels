@@ -11,6 +11,16 @@ module.exports = function(app) {
     });
   });
 
+  app.get("/dummyRooms", function(err, res) {
+    console.log("test");
+    if (err) throw err;
+    for (var i = 0; i < res.length; i++) {
+      console.log("Item ID: " + res[i].roomType);
+    }
+    connection.end();
+    console.log("-----------------------------------");
+  });
+
   // // Get route for returning posts of a specific category
   // app.get("/api/rooms/category/:category", function(req, res) {
   //   db.Room.findAll({
