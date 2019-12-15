@@ -107,7 +107,56 @@
   $('#BeginDate').on('change', function() {
       
       if($('#EndDate').val() !== ""){
-        console.log($('#EndDate').val() - $('#BeginDate').val());
+
+        var BeginDate = $("#BeginDate").val();
+        var EndDate = $("#EndDate").val();
+        var BeginDateArr = BeginDate.split(/[\s,]+/);
+        var EndDateArr = EndDate.split(/[\s,]+/);
+        var CheckIn = moment().month(BeginDateArr[0]).date(parseInt(BeginDateArr[1])).year(parseInt(BeginDateArr[2]));
+        var CheckOut = moment().month(EndDateArr[0]).date(parseInt(EndDateArr[1])).year(parseInt(EndDateArr[2]));
+        var CheckInDate = CheckIn.format("DD/MM/YYYY HH:mm:ss");
+        var CheckOutDate = CheckOut.format("DD/MM/YYYY HH:mm:ss");
+  
+      
+
+        console.log(BeginDate);
+        console.log(BeginDateArr);
+        console.log(CheckIn);
+        console.log(CheckInDate);
+
+        console.log(EndDate);
+        console.log(EndDateArr);
+        console.log(CheckOut);
+        console.log(CheckOutDate);
+    
+      var datecheckarr = [];
+
+    var CheckInUTC = CheckIn.format();
+    var CheckOutUTC = CheckOut.format();
+    console.log(CheckInUTC);
+    
+    var date1 = moment(CheckInUTC);
+    var date2 = moment(CheckOutUTC);
+    var diffIndays = date2.diff(date1, 'days');
+    console.log(diffIndays);
+    $('#disabled').html("<p>Hello</p>");
+    //console.log(date1);
+  
+    
+    
+
+      
+
+      for (var i = 0; i < diffIndays; i++){
+       datecheckarr.push(moment(CheckInUTC).format("DD/MM/YYYY HH:mm:ss"));
+      CheckInUTC = moment(CheckInUTC).add(1, 'day');
+        console.log(datecheckarr);
+      }
+
+      
+
+      
+        
       }
       
      
