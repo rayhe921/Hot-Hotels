@@ -45,7 +45,7 @@ $(document).ready(function() {
         roomDiv.append(image);
 
         // Putting the entire topic above the previous topics
-        $("#rooms-view").append(roomDiv);
+        $("#RoomsAval").append(roomDiv);
       }
     });
   }
