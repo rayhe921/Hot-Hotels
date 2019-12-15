@@ -1,19 +1,14 @@
+<h1>Rooms Page</h1>
+
 <div class="container">
-  <h2 class="my-4 text-center">Book Your Room Now!</h2>
-  <div class="container">
-    <ul>
-      {{#each room}}
-      <li>
-        <p>Type: {{roomType}}</p>
-      </li>
-      {{/each}}
-    </ul>
-    <div class="row">
-      <div class="col-md-12 room-container" id="RoomsAval">
-      </div>
-    </div>
-  </div>
-</div>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
-<script src="/js/rooms.js"></script>
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div id="rooms-view">
+
+            </div>
+
+
+            {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+            <script src="/js/rooms.js"></script>
