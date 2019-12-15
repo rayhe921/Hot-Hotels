@@ -5,8 +5,8 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  app.get("/rooms", function(req, res) {
-    res.render("rooms");
+  app.get("/dummyRooms", function(req, res) {
+    res.render("dummyRooms");
   });
 
   app.get("/payment", function(req, res) {
@@ -16,9 +16,7 @@ module.exports = function(app) {
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
   });
-  app.get("/rooms", function(req, res) {
-    res.render("room");
-  });
+
   // app.get("/", (req, res) => {
   //   res.render("index", {
   //     // stripePublishableKey: keys.stripePublishableKey

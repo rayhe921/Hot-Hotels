@@ -1,6 +1,6 @@
 module.exports = function(sequelize, DataTypes) {
   var Occupancy = sequelize.define("Occupancy", {
-    date: { type: DataTypes.DATE },
+    date: { type: DataTypes.STRING },
     occupied: {
       type: DataTypes.BOOLEAN,
       defaultValue: false
@@ -11,13 +11,13 @@ module.exports = function(sequelize, DataTypes) {
     //Associating occupancy with room via foreign key
     Occupancy.belongsTo(models.Room, {
       foreignKey: {
-        allowNull: false
+        defaultValue: null
       }
     });
 
     Occupancy.belongsTo(models.Client, {
       foreignKey: {
-        allowNull: false
+        defaultValue: null
       }
     });
   };
