@@ -9,18 +9,18 @@ module.exports = function(sequelize, DataTypes) {
     //Associating Reservation with room via foreign key
     Reservation.belongsTo(models.Room, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
 
     Reservation.belongsTo(models.Client, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
     Reservation.belongsTo(models.Occupancy, {
       foreignKey: {
-        allowNull: false
+        allowNull: true
       }
     });
   };
