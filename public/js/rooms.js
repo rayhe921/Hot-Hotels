@@ -1,89 +1,52 @@
-// $(document).ready(function() {
-//   // blogContainer holds all of our posts
-//   var roomContainer = $("#RoomsAval");
-//   var roomCategorySelect = $("#category");
-//   // Click events for the edit and delete buttons
-//   $(document).on("click", "button.edit", handleRoomEdit);
-//   roomCategorySelect.on("change", handleCategoryChange);
-//   var rooms;
+$(document).ready(function() {
+  getRooms();
 
-//   // This function grabs posts from the database and updates the view
-//   function getRooms(category) {
-//     var categoryString = category || "";
-//     if (categoryString) {
-//       categoryString = "/category/" + categoryString;
-//     }
-//     $.get("/api/dummyRooms" + categoryString, function(data) {
-//       console.log("dummyRooms", data);
-//       rooms = data;
-//       if (!rooms || !rooms.length) {
-//         displayEmpty();
-//       } else {
-//         initializeRows();
-//       }
-//     });
-//   }
-//   // Getting the initial list of posts
-//   getRooms();
-//   // InitializeRows handles appending all of our constructed post HTML inside
-//   // blogContainer
-//   function initializeRows() {
-//     roomContainer.empty();
-//     var roomsToAdd = [];
-//     for (var i = 0; i < rooms.length; i++) {
-//       roomsToAdd.push(createNewRow(rooms[i]));
-//     }
-//     roomContainer.append(roomsToAdd);
-//   }
+  function getRooms() {
+    $.get("/api/rooms", function(data) {
+      console.log("rooms", data);
 
-//   // This function constructs a post's HTML
-//   function createNewRow(room) {
-//     var newRoomCard = $("<div>");
-//     newRoomCard.addClass("room");
-//     var newRoomCardHeading = $("<div>");
-//     newRoomCardHeading.addClass("card-header");
-//     var editBtn = $("<button>");
-//     editBtn.text("EDIT");
-//     editBtn.addClass("edit btn btn-default");
-//     var newRoomTitle = $("<h2>");
-//     var newRoomCategory = $("<h5>");
-//     newRoomCategory.text(room.category);
-//     newRoomCategory.css({
-//       float: "right",
-//       "font-weight": "700",
-//       "margin-top": "-15px"
-//     });
-//     var newRoomCardBody = $("<div>");
-//     newRoomCardBody.addClass("card-body");
-//     var newRoomBody = $("<p>");
-//     newRoomTitle.text(room.title + " ");
-//     newRoomBody.text(room.body);
-//     newRoomCardHeading.append(editBtn);
-//     newRoomCardHeading.append(newRoomTitle);
-//     newRoomCardHeading.append(newRoomCategory);
-//     newRoomCardBody.append(newRoomBody);
-//     newRoomCard.append(newRoomCardHeading);
-//     newRoomCard.append(newRoomCardBody);
-//     newRoomCard.data("room", room);
-//     return newRoomCard;
-//   }
+      var roomsArray = [];
+      for (var i = 0; i < data.length; i++) {
+        roomsArray.push(data[i]);
+        // Creating a div to hold the topic
+        var roomDiv = $("<div class='room'>");
 
-//   function handleRoomEdit() {
-//     var currentPost = $(this)
-//       .parent()
-//       .parent()
-//       .data("post");
-//     window.location.href = "/dummyRooms?room_id=" + currentPost.id;
-//   }
+        // Storing the rating data
+        var roomType = data[i].roomType;
 
-//   // This function figures out which post we want to edit and takes it to the
-//   // Appropriate url
+        //storing the GIF title
+        var description = data[i].description;
 
-//   // This function displays a message when there are no posts
+        // Creating an element to have the rating displayed
+        var pRoomType = $("<p id ='pRating'></div>").text(
+          "Rating: " + roomType
+        );
 
-//   // This function handles reloading new posts when the category changes
-//   function handleCategoryChange() {
-//     var newRoomCategory = $(this).val();
-//     getRooms(newRoomCategory);
-//   }
-// });
+        //creating an element to have the title displayed
+        var pDescription = $("<p id = 'pTitle'></div>").text(
+          "Title: " + description
+        );
+
+        // Displaying the rating in HTML
+        roomDiv.append(pRoomType);
+        // Displaying the title in HTML
+        roomDiv.append(pDescription);
+
+        // Retrieving the URL for the image
+        var imgURL = data[i].imgUrl;
+
+        // Creating an element to hold the image
+        var image = $("<img>");
+        image.attr({
+          src: imgURL
+        });
+
+        // Appending the image
+        roomDiv.append(image);
+
+        // Putting the entire topic above the previous topics
+        $("#rooms-view").append(roomDiv);
+      }
+    });
+  }
+});
