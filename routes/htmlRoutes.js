@@ -9,15 +9,8 @@ module.exports = function(app) {
     res.render("rooms");
   });
 
-  app.get("/payment", function(req, res) {
-    res.render("payment");
-  });
-
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
-  });
-  app.get("/rooms", function(req, res) {
-    res.render("room");
   });
 
   app.get("/payment", function(req, res) {
@@ -31,12 +24,6 @@ module.exports = function(app) {
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
   });
-
-  // app.get("/", (req, res) => {
-  //   res.render("index", {
-  //     // stripePublishableKey: keys.stripePublishableKey
-  //   });
-  // });
 
   app.get("/client/:id", function(req, res) {
     db.Client.findOne({ where: { id: req.params.id } }).then(function(hoteldb) {
