@@ -5,8 +5,6 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  app.get("/rooms", function(req, res) {
-    res.render("room");
 
   app.get("/dummyRooms", function(req, res) {
     res.render("dummyRooms");
@@ -23,6 +21,10 @@ module.exports = function(app) {
 
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
+  });
+
+  app.get("/rooms", function(req, res) {
+    res.render("rooms");
   });
 
   // app.get("/", (req, res) => {
