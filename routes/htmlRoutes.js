@@ -20,12 +20,12 @@ module.exports = function(app) {
     res.render("room");
   });
 
-  app.get("/dummyRooms", function(req, res) {
-    res.render("dummyRooms");
-  });
-
   app.get("/payment", function(req, res) {
     res.render("payment");
+  });
+
+  app.get("/maps", function(req, res) {
+    res.render("maps");
   });
 
   app.get("/thankyou", function(req, res) {
