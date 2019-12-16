@@ -5,10 +5,7 @@ $(document).ready(function() {
     $.get("/api/rooms", function(data) {
       console.log("rooms", data);
 
-      var roomsArray = [];
       for (var i = 0; i < data.length; i++) {
-        roomsArray.push(data[i]);
-
         // Creating a div to hold the topic
         var roomDivCard = $("<div class='card'>");
 
@@ -36,9 +33,11 @@ $(document).ready(function() {
           "margin-top": "-10px"
         });
 
-        var button = $("<button>");
-        button.text("Book This Room");
-        button.addClass("btn");
+        var button = $("<button/>", {
+          text: "BOOK THIS ROOM", //set text 1 to 10
+          value: data[i].roomCost,
+          class: "btn"
+        });
 
         button.css({
           float: "right",
@@ -86,6 +85,17 @@ $(document).ready(function() {
         // Putting the entire topic above the previous topics
         $("#RoomsAval").append(roomDivCard);
       }
+
+      //function to find total cost of room selected
+      $(".btn").on("click", function() {
+        var chosenRoomBtn = $(this).val();
+        totalNights = 3;
+        var totalCost = chosenRoomBtn * totalNights;
+        console.log("testing function");
+        console.log(totalCost);
+        //navigate to payment page
+        window.location = "payment";
+      });
     });
   }
 });

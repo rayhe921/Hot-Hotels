@@ -108,3 +108,7 @@ function stripeTokenHandler(token) {
   // Submit the form
   form.submit();
 }
+
+$(".submit").on("click", function() {
+  window.location = "thankyou";
+});
