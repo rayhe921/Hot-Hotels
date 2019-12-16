@@ -1,20 +1,47 @@
-<h1>Rooms Page</h1>
-
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
+<nav class="nav-extended indigo darken-4">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo HotHotel center"><i class="material-icons large">beach_access</i>Hot Hotel &
+            Spa</a>
+        <ul class="right hide-on-med-and-down">
 
-</header>
-<!-- Div container to hold content of app-->
+            <li><a class="waves-effect waves-light btn-large grey">Reserve Now</a></li>
+        </ul>
+    </div>
+    <div class="container">
+
+
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+                <li class="tab"><a href="#test1">Overview</a></li>
+                <li class="tab"><a href="#Photos">Photos</a></li>
+                <li class="tab"><a href="/maps">Map</a></li>
+                {{!-- <li class="tab white-text"><a href="#test4"><i class="material-icons left large">local_phone</i>999-999-9999</a></li>
+        <li class="tab right white-text"><a href="#test5"><i class="material-icons left large">location_on</i>1111 Seattle Drive, Seattle WA 99999</a></li>
+           --}}
+            </ul>
+        </div>
+    </div>
+</nav>
+
 <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="container">
 
-    <!-- Rendered Buttons will get dynamically populated in this view  -->
-    <div id="RoomsAval"></div>
+                <!-- Rendered Buttons will get dynamically populated in this view  -->
+                <div id="RoomsAval"></div>
 
-    <!-- form for submitting user input for creating new topics-->
-</div>
+                <!-- form for submitting user input for creating new topics-->
+            </div>
 
-<script language="JavaScript" type="text/javascript" src="/js/rooms.js"></script>
+
+            {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+            <script src="/js/rooms.js"></script>
