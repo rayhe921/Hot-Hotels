@@ -1,14 +1,6 @@
 var db = require("../models");
 const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
 
-// Routes
-// =============================================================
-// module.exports = function(app) {
-//   app.get("/rooms", function(req, res) {
-//     db.Room.findAll({}).then(function(dbRoom) {
-//       res.json(dbRoom);
-//     });
-//});
 
 module.exports = function(app) {
   app.get("/api/rooms", function(req, res) {
