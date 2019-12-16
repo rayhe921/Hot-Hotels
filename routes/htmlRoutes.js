@@ -5,15 +5,8 @@ module.exports = function(app) {
     res.render("index");
   });
 
-
-<<<<<<< HEAD
-  app.get("/thankyou", function(req, res) {
-    res.render("thankyou");
-=======
   app.get("/dummyRooms", function(req, res) {
     res.render("dummyRooms");
-
->>>>>>> master
   });
 
   app.get("/payment", function(req, res) {
@@ -28,8 +21,6 @@ module.exports = function(app) {
     res.render("thankyou");
   });
 
-<<<<<<< HEAD
-=======
   app.get("/rooms", function(req, res) {
     res.render("rooms");
   });
@@ -40,7 +31,6 @@ module.exports = function(app) {
   //   });
   // });
 
->>>>>>> master
   app.get("/client/:id", function(req, res) {
     db.Client.findOne({ where: { id: req.params.id } }).then(function(hoteldb) {
       res.render("client", {
