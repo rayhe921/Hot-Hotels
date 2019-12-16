@@ -114,8 +114,8 @@
         var EndDateArr = EndDate.split(/[\s,]+/);
         var CheckIn = moment().month(BeginDateArr[0]).date(parseInt(BeginDateArr[1])).year(parseInt(BeginDateArr[2]));
         var CheckOut = moment().month(EndDateArr[0]).date(parseInt(EndDateArr[1])).year(parseInt(EndDateArr[2]));
-        var CheckInDate = CheckIn.format("DD/MM/YYYY HH:mm:ss");
-        var CheckOutDate = CheckOut.format("DD/MM/YYYY HH:mm:ss");
+        var CheckInDate = CheckIn.format("DD/MM/YYYY");
+        var CheckOutDate = CheckOut.format("DD/MM/YYYY");
   
       
 
@@ -148,7 +148,7 @@
       
 
       for (var i = 0; i < diffIndays; i++){
-       datecheckarr.push(moment(CheckInUTC).format("DD/MM/YYYY HH:mm:ss"));
+       datecheckarr.push(moment(CheckInUTC).format("DD/MM/YYYY"));
       CheckInUTC = moment(CheckInUTC).add(1, 'day');
         console.log(datecheckarr);
       }
