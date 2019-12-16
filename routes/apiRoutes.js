@@ -1,25 +1,14 @@
 var db = require("../models");
 const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
 
+
 module.exports = function(app) {
-  // Get all examples
-  app.get("/api/clients", function(req, res) {
-    db.Client.findAll({}).then(function(hoteldb) {
-      res.json(hoteldb);
-    });
-  });
-
-  // Create a new example
-  app.post("/api/clients", function(req, res) {
-    db.Client.create(req.body).then(function(hoteldb) {
-      res.json(hoteldb);
-    });
-  });
-
-  // Delete an example by id
-  app.delete("/api/clients/:id", function(req, res) {
-    db.Client.destroy({ where: { id: req.params.id } }).then(function(hoteldb) {
-      res.json(hoteldb);
+  app.get("/api/rooms", function(req, res) {
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.Room.findAll({}).then(function(dbhotel) {
+      res.json(dbhotel);
     });
   });
 

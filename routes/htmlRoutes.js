@@ -5,20 +5,26 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  app.get("/rooms", function(req, res) {
-    res.render("rooms");
+  app.get("/dummyRooms", function(req, res) {
+    res.render("dummyRooms");
   });
 
   app.get("/payment", function(req, res) {
     res.render("payment");
+  });
+
+  app.get("/maps", function(req, res) {
+    res.render("maps");
   });
 
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
   });
-  app.get("/payment", function(req, res) {
-    res.render("payment");
+
+  app.get("/rooms", function(req, res) {
+    res.render("rooms");
   });
+
   // app.get("/", (req, res) => {
   //   res.render("index", {
   //     // stripePublishableKey: keys.stripePublishableKey
