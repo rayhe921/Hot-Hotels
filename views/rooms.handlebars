@@ -12,7 +12,7 @@
             Spa</a>
         <ul class="right hide-on-med-and-down">
 
-            <li><a class="waves-effect waves-light btn-large grey">Reserve Now</a></li>
+          
         </ul>
     </div>
     <div class="container">
@@ -23,13 +23,69 @@
                 <li class="tab"><a href="#test1">Overview</a></li>
                 <li class="tab"><a href="#Photos">Photos</a></li>
                 <li class="tab"><a href="/maps">Map</a></li>
-                {{!-- <li class="tab white-text"><a href="#test4"><i class="material-icons left large">local_phone</i>999-999-9999</a></li>
-        <li class="tab right white-text"><a href="#test5"><i class="material-icons left large">location_on</i>1111 Seattle Drive, Seattle WA 99999</a></li>
-           --}}
+                 <li class="tab active"><a href="#">Reservation</a></li>
+           
             </ul>
         </div>
     </div>
 </nav>
+{{!-- Reservation section for rooms --}}
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">
+          <div class="col s6 stay">
+              Stay Dates
+          </div>
+    </div>
+      <div class="collapsible-body"><span>
+        
+        
+
+    <div class="row" id="Reserve">
+      <h3>Let's get some dates</h3>
+       <div class="divider"></div>
+      <div class="col s3">
+        <label>Check-in Date</label>
+        <input type="text" class="datepicker" id="BeginDate" defaultDate="DEC">
+      </div>
+
+      <div class="col s3">
+        <label>Check-Out Date</label>
+        <input type="text" class="datepicker" id="EndDate">
+      </div>
+  
+         <div class="input-field col s3">
+            <select id="Adults">
+            
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="3">4</option>
+    </select>
+    <label>Number of Adults</label>
+  </div>
+        
+      <div class="col s3">
+          
+        <form>
+          <button class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit" name="action" id="DatesEdit">Edit
+            <i class="material-icons right">check</i>
+          </button>
+        </form>
+      </div>
+
+
+
+    </div>    
+        </span>
+        </div>
+    </li>
+  
+  
+
+
+
+
 
 <div class="container">
     <div class="row mt-4">
@@ -47,3 +103,21 @@
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
             <script src="/js/rooms.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('.datepicker').datepicker();
+  });
+
+   $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+$('#DatesEdit').on('click', function() {
+  $('.collapsible').collapsible('close');
+});
+
+    
+      
+</script>
+            
