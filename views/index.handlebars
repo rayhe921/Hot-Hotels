@@ -122,7 +122,12 @@
   $(document).ready(function () {
     $('.datepicker').datepicker();
   });
-
+  
+  var datecheckarr = [];
+  var BeginDate;
+  var EndDate;
+  var diffIndays = 0;
+  var NumberofAdults = 0;
 
   
   $('#DatesEntered').on('click', function() {
@@ -184,11 +189,26 @@
     console.log(EndDate);
     console.log(NumberofAdults);
       
-
-      
-        
+ // Creates local "temporary" object for holding reservation data
+      var newReservation = {
+        BeginningDate: BeginDate,
+        EndingDate: EndDate,
+        NumberofNights: diffIndays,
+        Adults: NumberofAdults,
+        ArrayOfDates: datecheckarr 
       }
+  // Uploads train data to the database
+database.ref().push(newReservation);
+// Logs everything to console
+    console.log(newReservation.BeginningDate);
+    console.log(newReservation.EndingDate);
+    console.log(newReservation.NumberofNights);
+    console.log(newReservation.Adults);
+    console.log(newReservation.ArrayOfDates);
       
+       
+  };
+ 
      
     });
   </script>
