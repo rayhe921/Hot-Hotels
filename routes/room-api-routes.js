@@ -25,4 +25,19 @@ module.exports = function(app) {
       res.json(dbReservation);
     });
   });
+
+    // POST route for saving a new todo
+    app.post("/api/reservations", function(req, res) {
+      console.log(req.body);
+      // create takes an argument of an object describing the item we want to
+      // insert into our table. In this case we just we pass in an object with a text
+      // and complete property (req.body)
+      // db.Reservation.create({
+      //   checkIn: req.body.checkIn,
+      //   checkOut: req.body.checkOut
+      // }).then(function(dbTodo) {
+      //   // We have access to the new todo as an argument inside of the callback function
+      //   res.json(dbTodo);
+      // });
+    });
 };
