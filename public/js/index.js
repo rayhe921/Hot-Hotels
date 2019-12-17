@@ -1,6 +1,3 @@
-
-
-
 // Get references to page elements
 var $exampleText = $("#exampleText");
 var $exampleDescription = $("#exampleDescription");
