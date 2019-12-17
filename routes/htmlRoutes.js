@@ -5,10 +5,6 @@ module.exports = function(app) {
     res.render("index");
   });
 
-  app.get("/dummyRooms", function(req, res) {
-    res.render("dummyRooms");
-  });
-
   app.get("/payment", function(req, res) {
     res.render("payment");
   });
