@@ -1,4 +1,5 @@
-module.exports = function(sequelize, DataTypes) {
+module.exports = function (sequelize, DataTypes) {
+  var moment = require('moment');
   var Occupancy = sequelize.define("Occupancy", {
     date: { type: DataTypes.STRING },
     occupied: {
@@ -7,7 +8,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
 
-  Occupancy.associate = function(models) {
+  Occupancy.associate = function (models) {
     //Associating occupancy with room via foreign key
     Occupancy.belongsTo(models.Room, {
       foreignKey: {
