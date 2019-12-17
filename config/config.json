@@ -1,11 +1,15 @@
 {
   "development": {
     "username": "root",
+<<<<<<< HEAD
     "password": "1234",
+=======
+    "password": "IcedMocha4",
+>>>>>>> master
     "database": "hoteldb",
     "host": "localhost",
     "dialect": "mysql",
-    "port": "3306"
+    "port": "3307"
   },
   "test": {
     "username": "root",
