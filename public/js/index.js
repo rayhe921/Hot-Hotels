@@ -1,3 +1,12 @@
+
+  var datecheckarr = [];
+  var BeginDate;
+  var EndDate;
+  var diffIndays = 0;
+  var NumberofAdults = 0;
+
+
+
 // Get references to page elements
 var $exampleText = $("#exampleText");
 var $exampleDescription = $("#exampleDescription");
