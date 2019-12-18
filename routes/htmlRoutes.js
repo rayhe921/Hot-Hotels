@@ -1,4 +1,5 @@
 var db = require("../models");
+var Op = require("sequelize").Op;
 
 module.exports = function(app) {
   app.get("/home", function(req, res) {
@@ -21,13 +22,28 @@ module.exports = function(app) {
     res.render("thankyou");
   });
 
-  app.get("/rooms", function(req, res) {
-    res.render("rooms");
-  });
+  // app.get("/rooms", function(req, res) {
+  //   console.log("query begin date", req.query.beginDate);
 
-  // app.get("/", (req, res) => {
-  //   res.render("index", {
-  //     // stripePublishableKey: keys.stripePublishableKey
+  //   // TODO: use moment to prepare endDate and startDate
+
+  //   var dateQuery = {};
+  //   dateQuery[Op.between] = [
+  //     /* TODO add startDate and endDate */
+  //   ];
+  //   db.Room.findAll({
+  //     include: [
+  //       {
+  //         model: db.Occupancy,
+  //         where: {
+  //           date: dateQuery
+  //         }
+  //       }
+  //     ]
+  //   }).then(function(dbRooms) {
+  //     console.log("rooms result", dbRooms);
+  //     res.render("rooms", { rooms: dbRooms });
+  //     //res.json(dbhotel);
   //   });
   // });
 
