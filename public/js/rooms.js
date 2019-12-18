@@ -94,7 +94,7 @@ $(document).ready(function() {
         console.log("testing function");
         console.log(totalCost);
         //navigate to payment page
-        window.location = "payment";
+        window.location = "client";
       });
     });
   }
