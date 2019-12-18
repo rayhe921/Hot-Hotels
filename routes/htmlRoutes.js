@@ -9,6 +9,10 @@ module.exports = function(app) {
     res.render("payment");
   });
 
+  app.get("/client", function(req, res) {
+    res.render("client");
+  });
+
   app.get("/maps", function(req, res) {
     res.render("maps");
   });

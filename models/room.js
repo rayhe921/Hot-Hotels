@@ -5,9 +5,18 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
       allowNull: false
     },
-    description: { type: DataTypes.STRING, allowNull: false },
-    imgUrl: { type: DataTypes.STRING, allowNull: false },
-    roomCost: { type: DataTypes.INTEGER, allowNull: false }
+    description: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    imgUrl: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    roomCost: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    }
   });
   Room.associate = function(models) {
     Room.belongsTo(models.Client, {
