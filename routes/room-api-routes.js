@@ -13,32 +13,32 @@ module.exports = function(app) {
     });
   });
 
-  // Get route for retrieving a single room
-  app.get("/api/reservations/:id", function(req, res) {
-    // 2. Add a join here to include the Client who purchased the room
-    db.Reservation.findOne({
-      where: {
-        id: req.params.id
-      }
-    }).then(function(dbReservation) {
-      console.log(dbReservation);
-      res.json(dbReservation);
+  // // Post route for retrieving a reservation
+  // app.post("/api/reservation", function(req, res) {
+  //   // 2. Add a join here to include the Client who purchased the room
+  //   db.Reservation.create({
+  //     checkIn: req.body.checkIn,
+  //     checkOut: req.body.checkOut,
+  //     totalCost: req.body.totalCost
+  //   }).then(function(dbReservation) {
+  //     console.log(dbReservation);
+  //     res.json(dbReservation);
+  //   });
+  // });
+
+  // POST route for saving a new todo
+  app.post("/api/reservations", function(req, res) {
+    console.log("Req.body: " + req.body);
+    // create takes an argument of an object describing the item we want to
+    // insert into our table. In this case we just we pass in an object with a text
+    // and complete property (req.body)
+    db.Reservation.create({
+      checkIn: req.body.checkIn,
+      checkOut: req.body.checkOut,
+      totalCost: req.body.totalCost
+    }).then(function(dbReserv) {
+      // We have access to the new todo as an argument inside of the callback function
+      res.json(dbReserv);
     });
   });
-
-    // POST route for saving a new todo
-    app.post("/api/reservations", function(req, res) {
-      console.log("Req.body: " + req.body);
-      // create takes an argument of an object describing the item we want to
-      // insert into our table. In this case we just we pass in an object with a text
-      // and complete property (req.body)
-      db.Reservation.create({
-        checkIn: req.body.checkIn,
-        checkOut: req.body.checkOut,
-        totalCost: req.body.totalCost
-      }).then(function(dbReserv) {
-        // We have access to the new todo as an argument inside of the callback function
-        res.json(dbReserv);
-      });
-    });
 };
