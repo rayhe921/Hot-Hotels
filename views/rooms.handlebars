@@ -1,20 +1,123 @@
-<h1>Rooms Page</h1>
-
 <!-- Compiled and minified CSS -->
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+<link rel="stylesheet" href="/styles/roomStyles.css" media="screen" title="no title" charset="utf-8">
 
 <!-- Compiled and minified JavaScript -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
 
-</header>
-<!-- Div container to hold content of app-->
+<nav class="nav-extended indigo darken-4">
+    <div class="nav-wrapper">
+        <a href="#" class="brand-logo HotHotel center"><i class="material-icons large">beach_access</i>Hot Hotel &
+            Spa</a>
+        <ul class="right hide-on-med-and-down">
+
+          
+        </ul>
+    </div>
+    <div class="container">
+
+
+        <div class="nav-content">
+            <ul class="tabs tabs-transparent">
+               <li class="tab"><a href="/home?action=#test1">Overview</a></li>
+                <li class="tab"><a href="/home?action=#Photos">Photos</a></li>
+                <li class="tab"><a href="/maps">Map</a></li>
+                 <li class="tab active"><a href="#">Reservation</a></li>
+           
+            </ul>
+        </div>
+    </div>
+</nav>
+{{!-- Reservation section for rooms --}}
+  <ul class="collapsible">
+    <li>
+      <div class="collapsible-header">
+          <div class="col s6 stay">
+              Stay Dates
+          </div>
+    </div>
+      <div class="collapsible-body"><span>
+        
+        
+
+    <div class="row" id="Reserve">
+      <h3>Let's get some dates</h3>
+       <div class="divider"></div>
+      <div class="col s3">
+        <label>Check-in Date</label>
+        <input type="text" class="datepicker" id="BeginDate" defaultDate="DEC">
+      </div>
+
+      <div class="col s3">
+        <label>Check-Out Date</label>
+        <input type="text" class="datepicker" id="EndDate">
+      </div>
+  
+         <div class="input-field col s3">
+            <select id="Adults">
+            
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="3">4</option>
+    </select>
+    <label>Number of Adults</label>
+  </div>
+        
+      <div class="col s3">
+          
+        <form>
+          <button class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit" name="action" id="DatesEdit">Edit
+            <i class="material-icons right">check</i>
+          </button>
+        </form>
+      </div>
+
+
+
+    </div>    
+        </span>
+        </div>
+    </li>
+  
+  
+
+
+
+
+
 <div class="container">
+    <div class="row mt-4">
+        <div class="col-md-4">
+            <div class="container">
 
-    <!-- Rendered Buttons will get dynamically populated in this view  -->
-    <div id="RoomsAval"></div>
+                <!-- Rendered Buttons will get dynamically populated in this view  -->
+                <div id="RoomsAval"></div>
 
-    <!-- form for submitting user input for creating new topics-->
-</div>
+                <!-- form for submitting user input for creating new topics-->
+            </div>
 
-<script language="JavaScript" type="text/javascript" src="/js/rooms.js"></script>
+
+            {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+            <script src="/js/rooms.js"></script>
+
+<script>
+$(document).ready(function () {
+    $('.datepicker').datepicker();
+  });
+
+   $(document).ready(function(){
+    $('.collapsible').collapsible();
+  });
+
+$('#DatesEdit').on('click', function() {
+  $('.collapsible').collapsible('close');
+});
+
+    
+      
+</script>
+            
