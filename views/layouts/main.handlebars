@@ -39,6 +39,12 @@
  var RAdults;
  var RDatesArray;
 
+  var datecheckarr = [];
+  var BeginDate;
+  var EndDate;
+  var diffIndays = 0;
+  var NumberofAdults = 0;
+
   $(document).ready(function(){
     $('select').formSelect();
   });
@@ -64,9 +70,9 @@ database.ref().on("child_added", function(childSnapshot, prevChildKey) {
  RAdults = childSnapshot.val().Adults;
  RDatesArray = childSnapshot.val().ArrayofDates;
 
-
+$(".stay").html("<h4> Stay Dates: " + RBegDate + " - " +  REndDate +  "</h4>");
+$(".adults").html("<p> Number of  Adults: " + RAdults +  "</p>");
 });
-
 
 </script>
 </html>

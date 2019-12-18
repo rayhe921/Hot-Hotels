@@ -32,10 +32,13 @@
 {{!-- Reservation section for rooms --}}
   <ul class="collapsible">
     <li>
-      <div class="collapsible-header">
-          <div class="col s6 stay">
-              Stay Dates
-          </div>
+      <div class="collapsible-header grey lighten-2">
+        <div class="row">
+            <div class="col s12 stay left ">
+              
+            </div>
+           
+        </div>
     </div>
       <div class="collapsible-body"><span>
         
@@ -111,23 +114,96 @@ $(document).ready(function () {
 
    $(document).ready(function(){
     $('.collapsible').collapsible();
+  
+  });
 
+$('#DatesEdit').on('click', function() {
+  $('.collapsible').collapsible('close');     
+  });
+ 
+$('#DatesEdit').on('click', function() {
+      
+      if($('#EndDate').val() === "" || $('#BeginDate').val() === "" || $('#Adults').val() === ""){
+            // 'rounded' is the class I'm applying to the toast
+          M.toast({html: 'Please complete first!', classes: 'rounded'});
+      }
+      else {
+
+        BeginDate = $("#BeginDate").val();
+        EndDate = $("#EndDate").val();
+        NumberofAdults = $("#Adults").val();
+        var BeginDateArr = BeginDate.split(/[\s,]+/);
+        var EndDateArr = EndDate.split(/[\s,]+/);
+        var CheckIn = moment().month(BeginDateArr[0]).date(parseInt(BeginDateArr[1])).year(parseInt(BeginDateArr[2]));
+        var CheckOut = moment().month(EndDateArr[0]).date(parseInt(EndDateArr[1])).year(parseInt(EndDateArr[2]));
+        var CheckInDate = CheckIn.format("DD/MM/YYYY");
+        var CheckOutDate = CheckOut.format("DD/MM/YYYY");
+  
+      
+
+        //console.log(BeginDate);
+        //console.log(BeginDateArr);
+        //console.log(CheckIn);
+        //console.log(CheckInDate);
+
+        //console.log(EndDate);
+        //console.log(EndDateArr);
+        //console.log(CheckOut);
+        //console.log(CheckOutDate);
+    
+      
+
+    var CheckInUTC = CheckIn.format();
+    var CheckOutUTC = CheckOut.format();
+    //console.log(CheckInUTC);
+    
+    var date1 = moment(CheckInUTC);
+    var date2 = moment(CheckOutUTC);
+    diffIndays = date2.diff(date1, 'days');
+   
+    
+    //console.log(date1);
+  
+    
+    
+
+      
+
+      for (var i = 0; i < diffIndays; i++){
+       datecheckarr.push(moment(CheckInUTC).format("DD/MM/YYYY"));
+      CheckInUTC = moment(CheckInUTC).add(1, 'day');
+        //console.log(datecheckarr);
+      }
     console.log(diffIndays);
     console.log(datecheckarr);
     console.log(BeginDate);
     console.log(EndDate);
     console.log(NumberofAdults);
-  });
+      
+ // Creates local "temporary" object for holding reservation data
+      var newReservation = {
+        BeginningDate: BeginDate,
+        EndingDate: EndDate,
+        NumberofNights: diffIndays,
+        Adults: NumberofAdults,
+        ArrayOfDates: datecheckarr 
+      }
+  // Uploads reservation data to the database
+database.ref().push(newReservation);
+// Logs everything to console
+    console.log(newReservation.BeginningDate);
+    console.log(newReservation.EndingDate);
+    console.log(newReservation.NumberofNights);
+    console.log(newReservation.Adults);
+    console.log(newReservation.ArrayOfDates);
+      
+       
+  };
+ 
+     
+    });
+ 
 
-$('#DatesEdit').on('click', function() {
-  $('.collapsible').collapsible('close');
-
-   console.log(diffIndays);
-    console.log(datecheckarr);
-    console.log(BeginDate);
-    console.log(EndDate);
-    console.log(NumberofAdults);
-});
 
     
       
