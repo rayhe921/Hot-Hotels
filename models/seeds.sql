@@ -1,3 +1,4 @@
+USE hoteldb;
 INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Standard", "WONDERFUL KING GUEST ROOM, 1 KING", "https://i.pointhacks.com/2019/04/23202609/03-W-Hotel-Singapore.jpg", 100);
 INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Standard", "SPECTACULAR KING GUEST ROOM, 1 KING, HARBOR VIEW", "https://cache.marriott.com/marriottassets/marriott/SINWH/sinwh-marvelous-suite-6144-hor-feat.jpg?downsize=1024px:*", 139);
 INSERT INTO Rooms (roomType, description, imgUrl, roomCost) VALUES ("Double", "FABULOUS TWIN GUEST ROOM, 2 DOUBLE, POOL VIEW, BALCONY", "https://cache.marriott.com/marriottassets/marriott/SINWH/sinwh-fabulous-6686-hor-feat.jpg?download=2880px:*", 200);
