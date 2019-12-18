@@ -8,17 +8,17 @@ module.exports = function (sequelize, DataTypes) {
     }
   });
 
-  Occupancy.associate = function (models) {
+  Occupancy.associate = function(models) {
     //Associating occupancy with room via foreign key
     Occupancy.belongsTo(models.Room, {
       foreignKey: {
-        defaultValue: null
+        defaultValue: 0
       }
     });
 
     Occupancy.belongsTo(models.Client, {
       foreignKey: {
-        defaultValue: null
+        defaultValue: 0
       }
     });
   };

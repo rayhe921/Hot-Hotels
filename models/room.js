@@ -1,4 +1,4 @@
-module.exports = function (sequelize, DataTypes) {
+module.exports = function(sequelize, DataTypes) {
   var Room = sequelize.define("Room", {
     // Giving the  model a name of type STRING
     roomType: {
@@ -17,9 +17,8 @@ module.exports = function (sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  
   });
-  Room.associate = function (models) {
+  Room.associate = function(models) {
     Room.belongsTo(models.Client, {
       foreignKey: {
         allowNull: true
