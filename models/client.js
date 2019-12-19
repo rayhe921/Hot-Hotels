@@ -28,7 +28,10 @@ module.exports = function(sequelize, DataTypes) {
 
   Client.associate = function(models) {
     // Associating Client with Room
-    Client.hasMany(models.Room, {
+    Client.hasOne(models.Room, {
+      onDelete: "cascade"
+    });
+    Client.hasOne(models.Occupancy, {
       onDelete: "cascade"
     });
   };
