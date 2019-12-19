@@ -62,19 +62,19 @@ firebase.initializeApp(config);
 
 var database = firebase.database();
 
-database.ref().on("child_added", function(childSnapshot, prevChildKey) {
- console.log(childSnapshot.val());
+//database.ref().on("child_added", function(childSnapshot, prevChildKey) {
+ 
 
  //Everything is stored in a variable
- RBegDate = childSnapshot.val().BeginningDate;
- REndDate = childSnapshot.val().EndingDate;
- RNumberofNights =  childSnapshot.val().NumberofNights;
- RAdults = childSnapshot.val().Adults;
- RDatesArray = childSnapshot.val().ArrayofDates;
+// RBegDate = childSnapshot.val().BeginningDate;
+ //REndDate = childSnapshot.val().EndingDate;
+ //RNumberofNights =  childSnapshot.val().NumberofNights;
+ //RAdults = childSnapshot.val().Adults;
+ ///RDatesArray = childSnapshot.val().ArrayofDates;
 
-$(".stay").html("<h4> Stay Dates: " + RBegDate + " - " +  REndDate +  "</h4>");
-$(".adults").html("<p> Number of  Adults: " + RAdults +  "</p>");
-});
+//$(".stay").html("<h4> Stay Dates: " + RBegDate + " - " +  REndDate +  "</h4>");
+//$(".adults").html("<p> Number of  Adults: " + RAdults +  "</p>");
+//});
 
 </script>
 
