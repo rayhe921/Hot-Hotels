@@ -19,7 +19,7 @@ module.exports = function(sequelize, DataTypes) {
     }
   });
   Room.associate = function(models) {
-    Room.belongsTo(models.Client, {
+    Room.hasMany(models.Occupancy, {
       foreignKey: {
         allowNull: true
       }

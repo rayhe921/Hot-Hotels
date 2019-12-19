@@ -1,6 +1,6 @@
 var db = require("../models");
 var Op = require("sequelize").Op;
-var moment = require('moment');
+var moment = require("moment");
 moment().format();
 
 module.exports = function(app) {
@@ -13,9 +13,6 @@ module.exports = function(app) {
   });
 
   app.get("/client", function(req, res) {
-    console.log("firstName", req.query.beginDate);
-    console.log("lastName", req.query.endDate);
-    console.log("diffInDays", req.query.diffIndays);
     res.render("client");
   });
 
@@ -29,90 +26,60 @@ module.exports = function(app) {
 
   app.get("/rooms", function(req, res) {
     // console.log("query begin date", req.query.beginDate);
-    res.render("rooms");
-//moment conversion script
-  
-  var BeginDate;
-  var EndDate;
-  var NumberofNights = 0;
-  var NumberofAdults = 0;
+    //moment conversion script
 
-  BeginDate = req.query.beginDate;
-  EndDate = req.query.endDate;
-  var BeginDateArr = BeginDate.split(/[\s,]+/);
-  var EndDateArr = EndDate.split(/[\s,]+/);
-  var CheckIn = moment().month(BeginDateArr[0]).date(parseInt(BeginDateArr[1])).year(parseInt(BeginDateArr[2]));
-  var CheckOut = moment().month(EndDateArr[0]).date(parseInt(EndDateArr[1])).year(parseInt(EndDateArr[2]));
+    var BeginDate;
+    var EndDate;
+    var NumberofNights = 0;
+    var NumberofAdults = 0;
 
-  var CheckInDate = CheckIn.format("DD/MM/YYYY");
-  var CheckOutDate = CheckOut.format("DD/MM/YYYY");
-  console.log(BeginDate);
-  console.log(CheckInDate);
+    BeginDate = req.query.beginDate;
+    EndDate = req.query.endDate;
+    var BeginDateArr = BeginDate.split(/[\s,]+/);
+    var EndDateArr = EndDate.split(/[\s,]+/);
+    var CheckIn = moment()
+      .month(BeginDateArr[0])
+      .date(parseInt(BeginDateArr[1]))
+      .year(parseInt(BeginDateArr[2]));
+    var CheckOut = moment()
+      .month(EndDateArr[0])
+      .date(parseInt(EndDateArr[1]))
+      .year(parseInt(EndDateArr[2]));
 
-  console.log(EndDate);
-  console.log(CheckOutDate);
+    var CheckInDate = CheckIn.format("DD/MM/YYYY");
+    var CheckOutDate = CheckOut.format("DD/MM/YYYY");
+    console.log(BeginDate);
+    console.log(CheckInDate);
 
-  //Number of Nights calculation with moment
-  var CheckInUTC = CheckIn.format();
-  var CheckOutUTC = CheckOut.format();
+    console.log(EndDate);
+    console.log(CheckOutDate);
 
+    //Number of Nights calculation with moment
+    var CheckInUTC = CheckIn.format();
+    var CheckOutUTC = CheckOut.format();
 
-  var date1 = moment(CheckInUTC);
-  var date2 = moment(CheckOutUTC);
-  NumberofNights = date2.diff(date1, 'days');
-  console.log(NumberofNights);
+    var date1 = moment(CheckInUTC);
+    var date2 = moment(CheckOutUTC);
+    NumberofNights = date2.diff(date1, "days");
+    console.log(NumberofNights);
 
+    // TODO: use moment to prepare endDate and startDate
 
- 
-
-
-  //   var startDate = req.query.beginDate;
-  //   var endDate = req.query.endDate;
-  //   // TODO: use moment to prepare endDate and startDate
-
-  //   var dateQuery = {};
-  //   dateQuery[Op.between] = [startDate, endDate];
-  //   /* TODO add startDate and endDate */
-
-  //   db.Room.findAll({
-  //     include: [
-  //       {
-  //         model: db.Occupancy,
-  //         where: {
-  //           date: dateQuery
-  //         }
-  //       }
-  //     ]
-  //   }).then(function(dbRooms) {
-  //     console.log("rooms result", dbRooms);
-  //     res.render("rooms", { rooms: dbRooms });
-  //     //res.json(dbhotel);
-  //   });
-  // });
-
-  // app.get("/rooms", function(req, res) {
-  //   console.log("query begin date", req.query.beginDate);
-
-  //   // TODO: use moment to prepare endDate and startDate
-
-  //   var dateQuery = {};
-  //   dateQuery[Op.between] = [
-  //     /* TODO add startDate and endDate */
-  //   ];
-  //   db.Room.findAll({
-  //     include: [
-  //       {
-  //         model: db.Occupancy,
-  //         where: {
-  //           date: dateQuery
-  //         }
-  //       }
-  //     ]
-  //   }).then(function(dbRooms) {
-  //     console.log("rooms result", dbRooms);
-  //     res.render("rooms", { rooms: dbRooms });
-  //     //res.json(dbhotel);
-  //   });
+    var dateQuery = {};
+    dateQuery[Op.between] = [CheckInDate, CheckOutDate];
+    db.Room.findAll({
+      include: [
+        {
+          model: db.Occupancy,
+          where: {
+            date: dateQuery
+          }
+        }
+      ]
+    }).then(function(dbRooms) {
+      console.log("rooms result", dbRooms);
+      res.render("rooms", { rooms: dbRooms });
+    });
   });
 
   app.get("/client/:id", function(req, res) {
