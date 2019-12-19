@@ -26,10 +26,6 @@ module.exports = function(app) {
 
   app.get("/rooms", function(req, res) {
     // console.log("query begin date", req.query.beginDate);
-    res.render("rooms", {
-      BeginDate: req.query.beginDate,
-      EndDate: req.query.endDate
-    });
     //moment conversion script
 
     var BeginDate;
@@ -67,26 +63,29 @@ module.exports = function(app) {
     NumberofNights = date2.diff(date1, "days");
     console.log(NumberofNights);
 
-    //   // TODO: use moment to prepare endDate and startDate
+    res.render("rooms", {
+      BeginDate: req.query.beginDate,
+      EndDate: req.query.endDate
+    });
 
-    //   var dateQuery = {};
-    //   dateQuery[Op.between] = [
-    //     /* TODO add startDate and endDate */
-    //   ];
-    //   db.Room.findAll({
-    //     include: [
-    //       {
-    //         model: db.Occupancy,
-    //         where: {
-    //           date: dateQuery
-    //         }
-    //       }
-    //     ]
-    //   }).then(function(dbRooms) {
-    //     console.log("rooms result", dbRooms);
-    //     res.render("rooms", { rooms: dbRooms });
-    //     //res.json(dbhotel);
-    //   });
+    // TODO: use moment to prepare endDate and startDate
+
+    var dateQuery = {};
+    dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
+    console.log(dateQuery);
+    db.Room.findAll({
+      include: [
+        {
+          model: db.Occupancy,
+          where: {
+            date: dateQuery
+          }
+        }
+      ]
+    }).then(function(dbRooms) {
+      console.log("rooms result", dbRooms);
+      res.render("rooms", { rooms: dbRooms });
+    });
   });
 
   app.get("/client/:id", function(req, res) {

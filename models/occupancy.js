@@ -1,5 +1,5 @@
-module.exports = function (sequelize, DataTypes) {
-  var moment = require('moment');
+module.exports = function(sequelize, DataTypes) {
+  // var moment = require('moment');
   var Occupancy = sequelize.define("Occupancy", {
     date: { type: DataTypes.STRING },
     occupied: {
