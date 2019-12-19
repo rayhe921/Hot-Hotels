@@ -27,19 +27,7 @@ module.exports = function(app) {
     console.log("Here");
   });
 
-  app.post("/client", function(req, res) {
-    console.log(req.body);
-    db.Client.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email
-    }).then(function(dbClient) {
-      res.json(dbClient);
-    });
-  });
-
-  app.post("api/client", function(req, res) {
-    console.log(req.body);
+  app.post("/api/client", function(req, res) {
     db.Client.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
