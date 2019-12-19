@@ -26,7 +26,11 @@ module.exports = function(app) {
 
   app.get("/rooms", function(req, res) {
     // console.log("query begin date", req.query.beginDate);
-    res.render("rooms");
+    res.render("rooms", 
+    {
+      BeginDate: req.query.beginDate,
+      EndDate: req.query.endDate
+    });
 //moment conversion script
   
   var BeginDate;
