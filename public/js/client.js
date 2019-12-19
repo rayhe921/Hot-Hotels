@@ -36,14 +36,14 @@ $(document).ready(function () {
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
     // updatePost(newPost);
-    submitPost(newPost);
-    /*if (updating) {
+    // submitPost(newPost);
+    if (updating) {
       newPost.id = postId;
     updatePost(newPost);
     }
     else {
       submitPost(newPost);
-    }*/
+    }
   });
 
   // Submits a new post and brings user to blog page upon completion
@@ -78,8 +78,8 @@ $(document).ready(function () {
       url: "/api/client",
       data: post
     })
-      .then(function (data) {
-        console.log(data + "this is data")
+      .then(function () {
+        console.log(post + "this is data")
         // window.location.href = "/payment";
       })
   }
