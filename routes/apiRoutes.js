@@ -26,17 +26,6 @@ module.exports = function(app) {
     console.log("Here");
   });
 
-  app.post("/api/client", function(req, res) {
-    db.Client.create({
-      firstName: req.body.firstName,
-      lastName: req.body.lastName,
-      email: req.body.email
-<<<<<<< Updated upstream
-    }).then(function(dbClient) {
-      res.json(dbClient);
-    });
-  });
-
   app.post("api/client", function(req, res) {
     console.log(req.body);
     db.Client.create({
@@ -46,12 +35,6 @@ module.exports = function(app) {
     }).then(function(dbClient) {
       res.json(dbClient);
     });
-=======
-    })
-      .then(function(dbClient) {
-        res.json(dbClient);
-      })
->>>>>>> Stashed changes
   });
 };
 
