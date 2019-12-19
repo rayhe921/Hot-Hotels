@@ -66,7 +66,8 @@ module.exports = function(app) {
     // TODO: use moment to prepare endDate and startDate
 
     var dateQuery = {};
-    dateQuery[Op.between] = [CheckInDate, CheckOutDate];
+    dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
+    console.log(dateQuery);
     db.Room.findAll({
       include: [
         {
