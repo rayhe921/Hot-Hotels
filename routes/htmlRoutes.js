@@ -1,5 +1,7 @@
 var db = require("../models");
 var Op = require("sequelize").Op;
+var moment = require('moment');
+moment().format();
 
 module.exports = function(app) {
   app.get("/home", function(req, res) {
@@ -25,8 +27,44 @@ module.exports = function(app) {
     res.render("thankyou");
   });
 
-  // app.get("/rooms", function(req, res) {
-  //   console.log("query begin date", req.query.beginDate);
+  app.get("/rooms", function(req, res) {
+    // console.log("query begin date", req.query.beginDate);
+    res.render("rooms");
+//moment conversion script
+  
+  var BeginDate;
+  var EndDate;
+  var NumberofNights = 0;
+  var NumberofAdults = 0;
+
+  BeginDate = req.query.beginDate;
+  EndDate = req.query.endDate;
+  var BeginDateArr = BeginDate.split(/[\s,]+/);
+  var EndDateArr = EndDate.split(/[\s,]+/);
+  var CheckIn = moment().month(BeginDateArr[0]).date(parseInt(BeginDateArr[1])).year(parseInt(BeginDateArr[2]));
+  var CheckOut = moment().month(EndDateArr[0]).date(parseInt(EndDateArr[1])).year(parseInt(EndDateArr[2]));
+
+  var CheckInDate = CheckIn.format("DD/MM/YYYY");
+  var CheckOutDate = CheckOut.format("DD/MM/YYYY");
+  console.log(BeginDate);
+  console.log(CheckInDate);
+
+  console.log(EndDate);
+  console.log(CheckOutDate);
+
+  //Number of Nights calculation with moment
+  var CheckInUTC = CheckIn.format();
+  var CheckOutUTC = CheckOut.format();
+
+
+  var date1 = moment(CheckInUTC);
+  var date2 = moment(CheckOutUTC);
+  NumberofNights = date2.diff(date1, 'days');
+  console.log(NumberofNights);
+
+
+ 
+
 
   //   var startDate = req.query.beginDate;
   //   var endDate = req.query.endDate;
@@ -75,7 +113,7 @@ module.exports = function(app) {
   //     res.render("rooms", { rooms: dbRooms });
   //     //res.json(dbhotel);
   //   });
-  // });
+  });
 
   app.get("/client/:id", function(req, res) {
     db.Client.findOne({ where: { id: req.params.id } }).then(function(hoteldb) {
