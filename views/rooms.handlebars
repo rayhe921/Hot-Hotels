@@ -101,9 +101,16 @@
     <div class="row mt-4">
         <div class="col-md-4">
             <div class="container">
-
                 <!-- Rendered Buttons will get dynamically populated in this view  -->
                 <div id="RoomsAval">
+                <div>
+                {{#prvData}}
+                <div>
+                    <h3>{{beginDate}}</h3>
+                    <p>{{endDate}}</p>                      
+                  </div>
+                {{/prvData}}
+              </div>
                   {{#each rooms}}
                   <div class='card'>
                     
@@ -111,9 +118,12 @@
                     <img class ='activator' src='{{imgUrl}}'>
                   </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+    <form method="get" action="/client">
+        
+      <span class="card-title activator grey-text text-darken-4">Card Title<button class="btn waves-effect waves-light right"  type="submit" name="action">Submit
     <i class="material-icons right">send</i>
   </button></span>
+  </form>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
