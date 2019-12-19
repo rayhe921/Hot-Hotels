@@ -28,7 +28,6 @@ module.exports = function(app) {
   });
 
   app.post("/api/client", function(req, res) {
-    console.log(req.body);
     db.Client.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
