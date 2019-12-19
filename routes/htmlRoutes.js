@@ -63,6 +63,11 @@ module.exports = function(app) {
     NumberofNights = date2.diff(date1, "days");
     console.log(NumberofNights);
 
+    res.render("rooms", {
+      BeginDate: req.query.beginDate,
+      EndDate: req.query.endDate
+    });
+
     // TODO: use moment to prepare endDate and startDate
 
     var dateQuery = {};
