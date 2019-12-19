@@ -1,7 +1,6 @@
 var db = require("../models");
 const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
 
-
 module.exports = function(app) {
   app.get("/api/rooms", function(req, res) {
     // Here we add an "include" property to our options in our findAll query
@@ -33,10 +32,20 @@ module.exports = function(app) {
       firstName: req.body.firstName,
       lastName: req.body.lastName,
       email: req.body.email
-    })
-      .then(function(dbClient) {
-        res.json(dbClient);
-      });
+    }).then(function(dbClient) {
+      res.json(dbClient);
+    });
+  });
+
+  app.post("api/client", function(req, res) {
+    console.log(req.body);
+    db.Client.create({
+      firstName: req.body.firstName,
+      lastName: req.body.lastName,
+      email: req.body.email
+    }).then(function(dbClient) {
+      res.json(dbClient);
+    });
   });
 };
 

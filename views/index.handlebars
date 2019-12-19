@@ -63,46 +63,48 @@
       <a class="carousel-item" href="#five!"><img
           src="https://pix10.agoda.net/geo/city/3687/1_3687_02.jpg?s=1920x822"></a>
     </div>
-    <div class="row" id="Reserve">
-      <h3>Let's get some dates</h3>
-      <div class="divider"></div>
-      <div class="col s3">
-        <label>Check-in Date</label>
-        <input type="text" class="datepicker" id="BeginDate">
-      </div>
+    <form method="get" action="/rooms">
+      <div class="row" id="Reserve">
+        <h3>Let's get some dates</h3>
+        <div class="divider"></div>
+        <div class="col s3">
+          <label>Check-in Date</label>
+          <input type="text" class="datepicker" name="beginDate" id="BeginDate">
+        </div>
 
-      <div class="col s3">
-        <label>Check-Out Date</label>
-        <input type="text" class="datepicker" id="EndDate">
-      </div>
+        <div class="col s3">
+          <label>Check-Out Date</label>
+          <input type="text" class="datepicker" name="endDate" id="EndDate">
+        </div>
 
-  
-         <div class="input-field col s3">
-            <select id="Adults">
-            
+
+        <div class="input-field col s3">
+          <select id="Adults">
+
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
             <option value="4">4</option>
-    </select>
-    <label>Number of Adults</label>
-  </div>
-        
+          </select>
+          <label>Number of Adults</label>
+        </div>
 
-      <div class="col s3">
-          <form method="get" action="/rooms">
-          <button class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit" name="action"
+
+        <div class="col s3">
+
+
+          <button id="myBtn" class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit"
             id="DatesEntered">Reserve A Room
             <i class="material-icons right">check</i>
           </button>
-        </form>
-      </div>
-
-
-
-    </div>
-
+    </form>
   </div>
+
+
+
+</div>
+
+</div>
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -124,7 +126,7 @@
   $(document).ready(function () {
     $('.datepicker').datepicker();
   });
-  
+
   var datecheckarr = [];
   var BeginDate;
   var EndDate;
@@ -152,18 +154,6 @@
 
 
 
-      //console.log(BeginDate);
-      //console.log(BeginDateArr);
-      //console.log(CheckIn);
-      //console.log(CheckInDate);
-
-      //console.log(EndDate);
-      //console.log(EndDateArr);
-      //console.log(CheckOut);
-      //console.log(CheckOutDate);
-
-
-
       var CheckInUTC = CheckIn.format();
       var CheckOutUTC = CheckOut.format();
       //console.log(CheckInUTC);
@@ -186,35 +176,34 @@
         //console.log(datecheckarr);
       }
 
-    console.log(diffIndays);
-    console.log(datecheckarr);
-    console.log(BeginDate);
-    console.log(EndDate);
-    console.log(NumberofAdults);
-      
- // Creates local "temporary" object for holding reservation data
+      console.log(diffIndays);
+      console.log(datecheckarr);
+      console.log(BeginDate);
+      console.log(EndDate);
+      console.log(NumberofAdults);
+
+      // Creates local "temporary" object for holding reservation data
       var newReservation = {
         BeginningDate: BeginDate,
         EndingDate: EndDate,
         NumberofNights: diffIndays,
         Adults: NumberofAdults,
-        ArrayOfDates: datecheckarr 
+        ArrayOfDates: datecheckarr
       }
-  // Uploads reservation data to the database
-database.ref().push(newReservation);
-// Logs everything to console
-    console.log(newReservation.BeginningDate);
-    console.log(newReservation.EndingDate);
-    console.log(newReservation.NumberofNights);
-    console.log(newReservation.Adults);
-    console.log(newReservation.ArrayOfDates);
-      
-       
-  };
- 
-     
-    });
-  </script>
- 
+      // Uploads reservation data to the database
+      database.ref().push(newReservation);
+      // Logs everything to console
+      console.log(newReservation.BeginningDate);
+      console.log(newReservation.EndingDate);
+      console.log(newReservation.NumberofNights);
+      console.log(newReservation.Adults);
+      console.log(newReservation.ArrayOfDates);
 
 
+    };
+
+  });
+
+
+
+</script>
