@@ -32,49 +32,56 @@
 {{!-- Reservation section for rooms --}}
   <ul class="collapsible">
     <li>
-      <div class="collapsible-header grey lighten-2">
-        <div class="row">
-            <div class="col s12 stay left ">
-              
+      <div class="collapsible-header grey lighten-2 center">
+      <div class="row">
+
+      
+            <div class=" stay ">
+              <h4 class= "left">Stay Dates: {{BeginDate}} - {{EndDate}}</h4>
+              <br>
+              <a class="btn-floating btn-large waves-effect waves-light red">Edit</a>
             </div>
            
-        </div>
+        </div>   
+        
     </div>
       <div class="collapsible-body"><span>
         
-        
+     <form method="get" action="/rooms">
+      <div class="row" id="Reserve">
+        <h3>Let's get some dates</h3>
+        <div class="divider"></div>
+        <div class="col s3">
+          <label>Check-in Date</label>
+          <input type="text" class="datepicker" name="beginDate" id="BeginDate">
+        </div>
 
-    <div class="row" id="Reserve">
-      <h3>Let's get some dates</h3>
-       <div class="divider"></div>
-      <div class="col s3">
-        <label>Check-in Date</label>
-        <input type="text" class="datepicker" id="BeginDate" defaultDate="DEC">
-      </div>
+        <div class="col s3">
+          <label>Check-Out Date</label>
+          <input type="text" class="datepicker" name="endDate" id="EndDate">
+        </div>
 
-      <div class="col s3">
-        <label>Check-Out Date</label>
-        <input type="text" class="datepicker" id="EndDate">
-      </div>
-  
-         <div class="input-field col s3">
-            <select id="Adults">
-            
+
+        <div class="input-field col s3">
+          <select id="Adults">
+
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
-            <option value="3">4</option>
-    </select>
-    <label>Number of Adults</label>
-  </div>
-        
-      <div class="col s3">
-          
-        <form>
-          <button class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit" name="action" id="DatesEdit">Edit
+            <option value="4">4</option>
+          </select>
+          <label>Number of Adults</label>
+        </div>
+
+
+        <div class="col s3">
+
+
+          <button id="myBtn" class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit"
+            id="DatesEntered">Reserve A Room
             <i class="material-icons right">check</i>
           </button>
-        </form>
+    </form>
       </div>
 
 
