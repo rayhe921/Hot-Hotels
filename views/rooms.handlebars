@@ -111,15 +111,21 @@
                     <img class ='activator' src='{{imgUrl}}'>
                   </div>
     <div class="card-content">
-      <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">more_vert</i></span>
+      <span class="card-title activator grey-text text-darken-4">Card Title<button class="btn waves-effect waves-light right" type="submit" name="action">Submit
+    <i class="material-icons right">send</i>
+  </button></span>
     </div>
     <div class="card-reveal">
       <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
       <p>INFO</p>
     </div>
   </div>
-
                   {{/each}}
+
+
+
+
+
                 </div>
 
                 <!-- form for submitting user input for creating new topics-->
@@ -133,6 +139,13 @@
 
 <script>
 $(document).ready(function () {
+
+
+
+
+
+
+
     $('.datepicker').datepicker();
   });
 
