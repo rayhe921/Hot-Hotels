@@ -23,6 +23,7 @@ module.exports = function(app) {
       });
       res.json({ charge });
     })();
+    res.redirect("/thankyou");
     console.log("Here");
   });
 
