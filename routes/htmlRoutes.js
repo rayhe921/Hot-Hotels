@@ -11,6 +11,9 @@ module.exports = function(app) {
   });
 
   app.get("/client", function(req, res) {
+    console.log("firstName", req.query.beginDate);
+    console.log("lastName", req.query.endDate);
+    console.log("diffInDays", req.query.diffIndays);
     res.render("client");
   });
 
@@ -21,6 +24,33 @@ module.exports = function(app) {
   app.get("/thankyou", function(req, res) {
     res.render("thankyou");
   });
+
+  // app.get("/rooms", function(req, res) {
+  //   console.log("query begin date", req.query.beginDate);
+
+  //   var startDate = req.query.beginDate;
+  //   var endDate = req.query.endDate;
+  //   // TODO: use moment to prepare endDate and startDate
+
+  //   var dateQuery = {};
+  //   dateQuery[Op.between] = [startDate, endDate];
+  //   /* TODO add startDate and endDate */
+
+  //   db.Room.findAll({
+  //     include: [
+  //       {
+  //         model: db.Occupancy,
+  //         where: {
+  //           date: dateQuery
+  //         }
+  //       }
+  //     ]
+  //   }).then(function(dbRooms) {
+  //     console.log("rooms result", dbRooms);
+  //     res.render("rooms", { rooms: dbRooms });
+  //     //res.json(dbhotel);
+  //   });
+  // });
 
   // app.get("/rooms", function(req, res) {
   //   console.log("query begin date", req.query.beginDate);
