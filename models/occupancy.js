@@ -12,13 +12,13 @@ module.exports = function(sequelize, DataTypes) {
     //Associating occupancy with room via foreign key
     Occupancy.belongsTo(models.Room, {
       foreignKey: {
-        defaultValue: null
+        defaultValue: 0
       }
     });
 
     Occupancy.belongsTo(models.Client, {
       foreignKey: {
-        defaultValue: null
+        defaultValue: 0
       }
     });
   };
