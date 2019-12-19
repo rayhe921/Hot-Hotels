@@ -35,13 +35,15 @@ $(document).ready(function () {
 
     // If we're updating a post run updatePost to update a post
     // Otherwise run submitPost to create a whole new post
-    // if (updating) {
-    //   newPost.id = postId;
+    // updatePost(newPost);
+    submitPost(newPost);
+    /*if (updating) {
+      newPost.id = postId;
     updatePost(newPost);
-    // }
-    // else {
-    //   submitPost(newPost);
-    // }
+    }
+    else {
+      submitPost(newPost);
+    }*/
   });
 
   // Submits a new post and brings user to blog page upon completion
@@ -50,30 +52,29 @@ $(document).ready(function () {
       // window.location.href = "/payment";
       // console.log(data);
       console.log(Post, "This is Post")
-      Post.firstName
 
     });
   }
 
   // Gets post data for a post if we're editing
-  function getPostData(id) {
-    $.get("/api/client/" + id, function (data) {
-      if (data) {
-        // If this post exists, prefill our cms forms with its data
-        firstName.val(data.firstName);
-        lastName.val(data.lastName);
-        email.val(data.email);
-        // If we have a post with this id, set a flag for us to know to update the post
-        // when we hit submit
-        updating = true;
-      }
-    });
-  }
+  // function getPostData(id) {
+  //   $.get("/api/client/" + id, function (data) {
+  //     if (data) {
+  //       // If this post exists, prefill our cms forms with its data
+  //       firstName.val(data.firstName);
+  //       lastName.val(data.lastName);
+  //       email.val(data.email);
+  //       // If we have a post with this id, set a flag for us to know to update the post
+  //       // when we hit submit
+  //       updating = true;
+  //     }
+  //   });
+  // }
 
   // Update a given post, bring user to the blog page when done
   function updatePost(post) {
     $.ajax({
-      method: "POST",
+      type: "POST",
       url: "/api/client",
       data: post
     })

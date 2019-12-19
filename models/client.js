@@ -3,26 +3,26 @@ module.exports = function(sequelize, DataTypes) {
     firstName: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //   len: [1, 15]
-      // }
+      validate: {
+        len: [1, 15]
+      }
     },
     lastName: {
       type: DataTypes.STRING,
       allowNull: false,
-      // validate: {
-      //   len: [1, 15]
-      // }
+      validate: {
+        len: [1, 15]
+      }
     },
     email: {
       type: DataTypes.STRING,
       allowNull: false,
       unique: true,
       lowercase: true,
-      // validate: {
-      //   isEmail: true,
-      //   notEmpty: true
-      // }
+      validate: {
+        isEmail: true,
+        notEmpty: true
+      }
     }
   });
 
