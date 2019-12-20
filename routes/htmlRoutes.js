@@ -90,16 +90,10 @@ module.exports = function(app) {
         }
       ]
     }).then(function(dbRooms) {
-<<<<<<< HEAD
       res.render("rooms", {
         rooms: dbRooms,
         BeginDate: req.query.beginDate,
         EndDate: req.query.endDate,
-=======
-      console.log("rooms result", req.query);
-      res.render("rooms", {
-        rooms: dbRooms,
->>>>>>> f09be56e3cbbc75afbf392150f2038d7c531fae2
         prvData: req.query
       });
     });
