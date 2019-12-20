@@ -24,6 +24,10 @@ module.exports = function(app) {
       res.json({ charge });
     })();
     res.redirect("/thankyou");
+<<<<<<< HEAD
+=======
+    console.log("Here");
+>>>>>>> f09be56e3cbbc75afbf392150f2038d7c531fae2
   });
 
   app.post("/client", function(req, res) {
