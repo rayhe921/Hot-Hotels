@@ -9,10 +9,36 @@ module.exports = function(app) {
   });
 
   app.get("/payment", function(req, res) {
+    //var roomSelection = this.value;
     res.render("payment");
   });
 
   app.get("/client", function(req, res) {
+    // var BeginDate = req.query.beginDate;
+    // var EndDate = req.query.endDate;
+
+    // console.log(BeginDate);
+    // console.log(EndDate);
+    // var BeginDateArr = BeginDate.split(/[\s,]+/);
+    // var EndDateArr = EndDate.split(/[\s,]+/);
+    // var CheckIn = moment()
+    //   .month(BeginDateArr[0])
+    //   .date(parseInt(BeginDateArr[1]))
+    //   .year(parseInt(BeginDateArr[2]));
+    // var CheckOut = moment()
+    //   .month(EndDateArr[0])
+    //   .date(parseInt(EndDateArr[1]))
+    //   .year(parseInt(EndDateArr[2]));
+
+    // //Number of Nights calculation with moment
+    // var CheckInUTC = CheckIn.format();
+    // var CheckOutUTC = CheckOut.format();
+
+    // var date1 = moment(CheckInUTC);
+    // var date2 = moment(CheckOutUTC);
+    // NumberofNights = date2.diff(date1, "days");
+    // console.log("xcgfcchgccghfgchcghcgcccgcccg", NumberofNights);
+
     res.render("client");
   });
 
@@ -25,7 +51,6 @@ module.exports = function(app) {
   });
 
   app.get("/rooms", function(req, res) {
-    // console.log("query begin date", req.query.beginDate);
     //moment conversion script
     var BeginDate = req.query.beginDate;
     var EndDate = req.query.endDate;
@@ -55,7 +80,6 @@ module.exports = function(app) {
 
     var dateQuery = {};
     dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
-    console.log(dateQuery);
     db.Room.findAll({
       include: [
         {
@@ -66,9 +90,10 @@ module.exports = function(app) {
         }
       ]
     }).then(function(dbRooms) {
-      console.log("rooms result", req.query);
       res.render("rooms", {
         rooms: dbRooms,
+        BeginDate: req.query.beginDate,
+        EndDate: req.query.endDate,
         prvData: req.query
       });
     });
