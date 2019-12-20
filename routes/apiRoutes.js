@@ -26,6 +26,7 @@ module.exports = function(app) {
     res.redirect("/thankyou");
   });
 
+
   app.post("/client", function(req, res) {
     db.Client.create({
       firstName: req.body.firstName,
@@ -36,7 +37,9 @@ module.exports = function(app) {
     });
   });
 
-  app.post("api/client", function(req, res) {
+
+  app.post("/api/client", function(req, res) {
+
     db.Client.create({
       firstName: req.body.firstName,
       lastName: req.body.lastName,
