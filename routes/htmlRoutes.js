@@ -14,30 +14,30 @@ module.exports = function(app) {
   });
 
   app.get("/client", function(req, res) {
-    var BeginDate = req.query.beginDate;
-    var EndDate = req.query.endDate;
+    // var BeginDate = req.query.beginDate;
+    // var EndDate = req.query.endDate;
 
-    console.log(BeginDate);
-    console.log(EnddDate);
-    var BeginDateArr = BeginDate.split(/[\s,]+/);
-    var EndDateArr = EndDate.split(/[\s,]+/);
-    var CheckIn = moment()
-      .month(BeginDateArr[0])
-      .date(parseInt(BeginDateArr[1]))
-      .year(parseInt(BeginDateArr[2]));
-    var CheckOut = moment()
-      .month(EndDateArr[0])
-      .date(parseInt(EndDateArr[1]))
-      .year(parseInt(EndDateArr[2]));
+    // console.log(BeginDate);
+    // console.log(EndDate);
+    // var BeginDateArr = BeginDate.split(/[\s,]+/);
+    // var EndDateArr = EndDate.split(/[\s,]+/);
+    // var CheckIn = moment()
+    //   .month(BeginDateArr[0])
+    //   .date(parseInt(BeginDateArr[1]))
+    //   .year(parseInt(BeginDateArr[2]));
+    // var CheckOut = moment()
+    //   .month(EndDateArr[0])
+    //   .date(parseInt(EndDateArr[1]))
+    //   .year(parseInt(EndDateArr[2]));
 
-    //Number of Nights calculation with moment
-    var CheckInUTC = CheckIn.format();
-    var CheckOutUTC = CheckOut.format();
+    // //Number of Nights calculation with moment
+    // var CheckInUTC = CheckIn.format();
+    // var CheckOutUTC = CheckOut.format();
 
-    var date1 = moment(CheckInUTC);
-    var date2 = moment(CheckOutUTC);
-    NumberofNights = date2.diff(date1, "days");
-    console.log("xcgfcchgccghfgchcghcgcccgcccg", NumberofNights);
+    // var date1 = moment(CheckInUTC);
+    // var date2 = moment(CheckOutUTC);
+    // NumberofNights = date2.diff(date1, "days");
+    // console.log("xcgfcchgccghfgchcghcgcccgcccg", NumberofNights);
 
     res.render("client");
   });
