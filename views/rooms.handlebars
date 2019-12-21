@@ -77,8 +77,8 @@
             <div class="col s3">
 
 
-              <button id="myBtn" class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit"
-                id="DatesEntered">Reserve A Room
+              <button id="myBtn" class="sendButton center btn waves-effect waves-light btn-large indigo darken-4"
+                type="submit" id="DatesEntered">Reserve A Room
                 <i class="material-icons right">check</i>
               </button>
         </form>
@@ -119,16 +119,15 @@
             <div class="card-content">
               <form method="get" action="/client">
 
-                <input id="roomCost" name="roomCost" type="hidden" value='{{roomCost}}'>
-                <input id="roomId" name="roomId" type="hidden" value='{{id}}'>
-                <input id="roomClientId" name="roomClientId" type="hidden" value='{{ClientId}}'>
-                <input id="beginDate" name="beginDate" type="hidden" value='{{BeginDate}}'>
-                <input id="endDatee" name="endDate" type="hidden" value='{{EndDate}}'>
+                <input name="roomCost" type="hidden" value='{{roomCost}}'>
+                <input name="roomId" type="hidden" value='{{id}}'>
+                <input name="roomClientId" type="hidden" value='{{ClientId}}'>
+                <input name="beginDate" type="hidden" value='{{BeginDate}}'>
+                <input name="endDate" type="hidden" value='{{EndDate}}'>
 
 
                 <span class="card-title activator grey-text text-darken-4"> {{roomType}} <button
-                    class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit" id="sendButton"
-                    name="action">Submit
+                    class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit" name="action">Submit
                     <i class="material-icons right">send</i>
                   </button></span>
               </form>
@@ -161,7 +160,7 @@
 
   <script>
 
-    $('#sendButton').on('click', function () {
+    $('.sendButton').on('click', function () {
 
       console.log("TEST TEST")
 
