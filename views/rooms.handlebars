@@ -100,70 +100,70 @@
   <div class="container">
     <div class="row mt-4">
       <div class="col-md-4">
-        <div class="container">
-          <!-- Rendered Buttons will get dynamically populated in this view  -->
-          <div id="RoomsAval">
+        <!-- Rendered Buttons will get dynamically populated in this view  -->
+        <div id="RoomsAval">
+          <div>
+            {{#prvData}}
             <div>
-              {{#prvData}}
-              <div>
-                <h3>{{beginDate}}</h3>
-                <p>{{endDate}}</p>
-              </div>
-              {{/prvData}}
+              <h3>{{beginDate}}</h3>
+              <p>{{endDate}}</p>
             </div>
-            {{#each rooms}}
-            <div class='card'>
-
-              <div class="card-image">
-                <img class='activator' src='{{imgUrl}}'>
-              </div>
-              <div class="card-content">
-                <form method="get" action="/client">
-
-                  <input id="roomCost" name="roomCost" type="hidden" value='{{roomCost}}'>
-                  <input id="roomId" name="roomId" type="hidden" value='{{id}}'>
-                  <input id="roomClientId" name="roomClientId" type="hidden" value='{{ClientId}}'>
-                  <input id="beginDate" name="beginDate" type="hidden" value='{{BeginDate}}'>
-                  <input id="endDatee" name="endDate" type="hidden" value='{{EndDate}}'>
-
-
-                  <span class="card-title activator grey-text text-darken-4"> {{roomType}} <button
-                      class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit" id="sendButton"
-                      name="action">Submit
-                      <i class="material-icons right">send</i>
-                    </button></span>
-                </form>
-              </div>
-              <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4"> {{roomType}} <i
-                    class="material-icons right">close</i></span>
-
-                <p> {{description}} </p>
-                <p> Total Cost a night is: {{roomCost}} a night! </p>
-              </div>
-            </div>
-            {{/each}}
-
-
-
-
-
+            {{/prvData}}
           </div>
+          {{#each rooms}}
+          <div class='card'>
 
-          <!-- form for submitting user input for creating new topics-->
+            <div class="card-image">
+              <img class='activator' src='{{imgUrl}}'>
+            </div>
+            <div class="card-content">
+              <form method="get" action="/client">
+
+                <input id="roomCost" name="roomCost" type="hidden" value='{{roomCost}}'>
+                <input id="roomId" name="roomId" type="hidden" value='{{id}}'>
+                <input id="roomClientId" name="roomClientId" type="hidden" value='{{ClientId}}'>
+                <input id="beginDate" name="beginDate" type="hidden" value='{{BeginDate}}'>
+                <input id="endDatee" name="endDate" type="hidden" value='{{EndDate}}'>
+
+
+                <span class="card-title activator grey-text text-darken-4"> {{roomType}} <button
+                    class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit" id="sendButton"
+                    name="action">Submit
+                    <i class="material-icons right">send</i>
+                  </button></span>
+              </form>
+            </div>
+            <div class="card-reveal">
+              <span class="card-title grey-text text-darken-4"> {{roomType}} <i
+                  class="material-icons right">close</i></span>
+
+              <p> {{description}} </p>
+              <p> Total Cost a night is: {{roomCost}} a night! </p>
+            </div>
+          </div>
+          {{/each}}
+
+
+
+
+
         </div>
 
+        <!-- form for submitting user input for creating new topics-->
+      </div>
+    </div>
+  </div>
 
-        {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
-          <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+  {{!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"> --}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 
-        {{!-- <script src="/js/rooms.js"></script> --}}
+  {{!-- <script src="/js/rooms.js"></script> --}}
 
-        <script>
+  <script>
 
-          $('#sendButton').on('click', function () {
+    $('#sendButton').on('click', function () {
 
-            console.log("TEST TEST")
+      console.log("TEST TEST")
 
               var roomSelection = (this.Room);
 console.log(roomSelection)
@@ -171,7 +171,7 @@ console.log(roomSelection)
 
 
         var newRoomSelection = {
-            roomSelection: roomSelection
+      roomSelection: roomSelection
 };
 
 
@@ -183,4 +183,4 @@ var date = localStorage.getItem('diffIndays');
 
 console.log(date); 
  
-        </script>
+  </script>
