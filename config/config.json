@@ -1,11 +1,14 @@
 {
   "development": {
     "username": "root",
-    "password": "IcedMocha4",
+    "password": "",
     "database": "hoteldb",
     "host": "localhost",
     "dialect": "mysql",
-    "port": "3307"
+    "define": {
+      "timestamps": false
+  },
+    "port": "3306"
   },
   "test": {
     "username": "root",
@@ -13,6 +16,9 @@
     "database": "hoteldb",
     "host": "localhost",
     "dialect": "mysql",
+    "define": {
+      "timestamps": false
+  },
     "logging": false
   },
   "production": {
