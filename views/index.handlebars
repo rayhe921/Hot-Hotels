@@ -4,10 +4,10 @@
     <ul class="right hide-on-med-and-down">
 
       <li><a class="waves-effect waves-light btn-large grey" href="#Reserve">Reserve Now</a></li>
-      
+
       <a href="#" data-target="slide-out" class="sidenav-trigger">Overview</a>
     </ul>
-    
+
   </div>
   <div class="container">
 
@@ -17,8 +17,8 @@
         <li class="tab active"><a href="/home">Home</a></li>
         <li class="tab"><a href="#Photos">Photos</a></li>
         <li class="tab"><a href="/maps">Map</a></li>
-        
-        
+
+
         {{!-- <li class="tab white-text"><a href="#test4"><i class="material-icons left large">local_phone</i>999-999-9999</a></li>
         <li class="tab right white-text"><a href="#test5"><i class="material-icons left large">location_on</i>1111 Seattle Drive, Seattle WA 99999</a></li>
            --}}
@@ -210,6 +210,9 @@
       console.log(newReservation.NumberofNights);
       console.log(newReservation.Adults);
       console.log(newReservation.ArrayOfDates);
+
+      localStorage.setItem('diffinDays', diffIndays);
+
 
 
     };

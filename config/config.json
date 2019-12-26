@@ -5,6 +5,9 @@
     "database": "hoteldb",
     "host": "localhost",
     "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    },
     "port": "3306"
   },
   "test": {
@@ -13,6 +16,9 @@
     "database": "hoteldb",
     "host": "localhost",
     "dialect": "mysql",
+    "define": {
+      "timestamps": false
+    },
     "logging": false
   },
   "production": {

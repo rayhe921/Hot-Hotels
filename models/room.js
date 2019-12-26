@@ -17,6 +17,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.INTEGER,
       allowNull: false
     }
+    
   });
   Room.associate = function(models) {
     Room.hasMany(models.Occupancy, {
