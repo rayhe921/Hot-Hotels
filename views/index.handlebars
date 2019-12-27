@@ -99,7 +99,7 @@
         <div class="col s3">
 
 
-          <button id="myBtn" class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit"
+          <button class=" center btn waves-effect waves-light btn-large indigo darken-4" type="submit"
             id="DatesEntered">Reserve A Room
             <i class="material-icons right">check</i>
           </button>
@@ -116,7 +116,7 @@
 </div>
 
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="/js/index.js"></script>
+{{!-- <script src="/js/index.js"></script> --}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
 
@@ -173,10 +173,10 @@
 
       //console.log(date1);
 
-      console.log("--------------");
-      console.log(date1);
-      console.log(date2);
-      console.log("--------------");
+//      console.log("--------------");
+  //    console.log(date1);
+    //  console.log(date2);
+      //console.log("--------------");
 
 
 
@@ -186,11 +186,11 @@
         //console.log(datecheckarr);
       }
 
-      console.log(diffIndays);
-      console.log(datecheckarr);
-      console.log(BeginDate);
-      console.log(EndDate);
-      console.log(NumberofAdults);
+    //  console.log(diffIndays);
+      //console.log(datecheckarr);
+    //  console.log(BeginDate);
+    //  console.log(EndDate);
+    //  console.log(NumberofAdults);
 
       // Creates local "temporary" object for holding reservation data
       var newReservation = {
@@ -203,16 +203,18 @@
         date2: date2
       }
       // Uploads reservation data to the database
-      database.ref().push(newReservation);
+     // database.ref().push(newReservation);
       // Logs everything to console
-      console.log(newReservation.BeginningDate);
-      console.log(newReservation.EndingDate);
-      console.log(newReservation.NumberofNights);
-      console.log(newReservation.Adults);
-      console.log(newReservation.ArrayOfDates);
+   //   console.log(newReservation.BeginningDate);
+   //   console.log(newReservation.EndingDate);
+   //   console.log(newReservation.NumberofNights);
+   //   console.log(newReservation.Adults);
+   //   console.log(newReservation.ArrayOfDates);
 
-      localStorage.setItem('diffinDays', diffIndays);
-
+      sessionStorage.setItem('diffinDays', diffIndays);
+      sessionStorage.setItem('date1', date1);
+      sessionStorage.setItem('date2', date2);
+      console.log(diffIndays)
 
 
     };
