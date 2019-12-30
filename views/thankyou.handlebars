@@ -1,3 +1,16 @@
+<style>
+  .card {
+    display: flex;
+    position: absolute;
+    top: 0;
+    left: 15%;
+    right: 15%;
+  }
+
+  .h2 {
+    padding-bottom: 20px;
+  }
+</style>
 <nav class="nav-extended indigo darken-4">
   <div class="nav-wrapper">
     <a href="#" class="brand-logo HotHotel center"><i class="material-icons large">beach_access</i>Hot Hotel & Spa</a>
@@ -7,16 +20,50 @@
   <div class="nav-content">
     <ul class="tabs tabs-transparent">
       <li class="tab"><a href="/index">Home</a></li>
-
-      {{!-- <li class="tab white-text"><a href="#test4"><i class="material-icons left large">local_phone</i>999-999-9999</a></li>
-        <li class="tab right white-text"><a href="#test5"><i class="material-icons left large">location_on</i>1111 Seattle Drive, Seattle WA 99999</a></li>
-           --}}
     </ul>
   </div>
 </nav>
 
 
 <div class="parallax-container">
+
+  <div class="row">
+    <div class="col s12 m6">
+      <div class="card blue-grey darken-1">
+        <div class="card-content white-text">
+
+          <div id="result">
+            <h2>Your Reservation Is Booked!</h2>
+            <br>
+
+            <h4 id="checkIn">
+
+            </h4>
+            <h4 id="checkOut">
+
+            </h4>
+
+            <h4 id="numOfAdults">
+
+            </h4>
+
+
+            <h4 id="totalNights">
+
+            </h4>
+
+            <h4 id="totalCost">
+
+            </h4>
+
+          </div>
+
+
+        </div>
+      </div>
+    </div>
+  </div>
+
   <div class="parallax"><img
       src="https://cache.marriott.com/marriottassets/marriott/SINWH/sinwh-hotel-skyline-5848-hor-clsc.jpg?downsize=2880px:*"
       height=250px;></div>
@@ -76,11 +123,35 @@
     </footer>
 
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script src="/public/js/thankyou.js"></script>
+    <script src="/js/thankyou.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <script>
 
       $(document).ready(function () {
+
+
+        if (typeof (Storage) !== "undefined") {
+
+          var newReservation = JSON.parse(sessionStorage.getItem('clientReservation'));
+          var newClientReservationTotalCost = JSON.parse(sessionStorage.getItem('clientReservationTotalCost'));
+
+          var numOfNights = newReservation.NumberofNights;
+          var checkIn = newReservation.BeginningDate;
+          var checkOut = newReservation.EndingDate;
+          var numAdults = newReservation.Adults;
+          var totalCost = newClientReservationTotalCost.totalCost;
+
+          document.getElementById("checkIn").innerHTML = "Check In: " + checkIn;
+          document.getElementById("checkOut").innerHTML = "Check Out: " + checkOut;
+          document.getElementById("numOfAdults").innerHTML = "Number of Adults: " + numAdults;
+          document.getElementById("totalNights").innerHTML = "Number of Nights: " + numOfNights;
+          document.getElementById("totalCost").innerHTML = "Total Cost for Stay: " + totalCost;
+
+
+        } else {
+          document.getElementById("result").innerHTML = "Sorry, your browser does not support Web Storage...";
+        }
+
         $('.parallax').parallax();
       });
 
@@ -102,6 +173,9 @@
           console.log($('#EndDate').val() - $('#BeginDate').val());
         }
 
-
       });
+
+
+
+
     </script>

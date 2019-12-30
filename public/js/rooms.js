@@ -91,7 +91,7 @@ $(document).ready(function() {
         var chosenRoomBtn = $(this).val();
         totalNights = 3;
         var totalCost = chosenRoomBtn * totalNights;
-        console.log("testing function");
+        console.log("testing function Total Cost");
         console.log(totalCost);
         //navigate to payment page
         window.location = "client";
