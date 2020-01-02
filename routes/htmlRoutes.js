@@ -26,7 +26,6 @@ module.exports = function(app) {
   });
 
   app.get("/rooms", function(req, res) {
-    console.log("IS THIS WORKING");
     //moment conversion script
     var BeginDate = req.query.beginDate;
     var EndDate = req.query.endDate;
@@ -53,7 +52,6 @@ module.exports = function(app) {
     NumberofNights = date2.diff(date1, "days");
 
     // TODO: use moment to prepare endDate and startDate
-
     var dateQuery = {};
     dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
     db.Room.findAll({

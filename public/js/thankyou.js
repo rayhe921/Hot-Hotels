@@ -1,27 +1,45 @@
+//POST RESERVATION Once Navigated to Thank you page
 $(document).ready(function() {
-  getReservation();
+  var storage = window.sessionStorage;
+  postReservation();
 
-  function getReservation() {
-    //   $.get("/api/reservation", function(data) {
-    //     console.log("reservation", data);
-    //     var reservationDiv = $("<div>");
-    //     var reservationCardImage = $("<div class ='card-image'>");
-    //     var reservationCardContent = $("<div class ='card-content'>");
-    //     var image = $("<img>");
-    //     image.attr({
-    //       src: imgURL
-    //     });
-    //     image.css({
-    //       width: "100%",
-    //       height: "auto"
-    //     });
-    //     roomCardContentContent.text(data[i].roomType);
-    //     var imgURL = data[i].imgUrl;
-    //     // Appending the image
-    //     reservationDiv.append(reservationCardImage);
-    //     reservationCardImage.append(image);
-    //     reservationDiv.append(reservationCardContent);
-    //     $("#selected-room").append(reservationCard);
-    //   });
+  function postReservation() {
+    var API = {
+      saveReservation: function(bookedReservation) {
+        return $.ajax({
+          headers: {
+            "Content-Type": "application/json"
+          },
+          type: "POST",
+          url: "/reservation",
+          data: JSON.stringify(bookedReservation)
+        });
+      }
+    };
+
+    var newReservation = JSON.parse(storage.getItem("clientReservation"));
+
+    console.log(newReservation);
+    var newClientReservationTotalCost = JSON.parse(
+      storage.getItem("clientReservationTotalCost")
+    );
+
+    console.log(newClientReservationTotalCost);
+
+    var checkIn = newReservation.BeginningDate;
+    var checkOut = newReservation.EndingDate;
+    console.log(checkIn);
+    console.log(checkOut);
+    var totalCost = newClientReservationTotalCost.totalCost;
+    var roomId = newClientReservationTotalCost.roomId;
+
+    var bookedReservation = {
+      checkIn: checkIn,
+      checkOut: checkOut,
+      totalCost: totalCost,
+      roomId: roomId
+    };
+
+    API.saveReservation(bookedReservation);
   }
 });

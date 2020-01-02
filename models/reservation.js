@@ -7,22 +7,15 @@ module.exports = function(sequelize, DataTypes) {
 
   Reservation.associate = function(models) {
     //Associating Reservation with room via foreign key
-    Reservation.belongsTo(models.Room, {
-      foreignKey: {
-        defaultValue: 0
-      }
-    });
+    Reservation.belongsTo(models.Room, { foreignKey: "RoomId" });
 
-    Reservation.belongsTo(models.Client, {
-      foreignKey: {
-        defaultValue: 0
-      }
-    });
-    Reservation.belongsTo(models.Occupancy, {
-      foreignKey: {
-        defaultValue: 0
-      }
-    });
+    Reservation.belongsTo(models.Client, { foreignKey: "ClientId" });
+
+    // Reservation.belongsTo(models.Occupancy, {
+    //   foreignKey: {
+    //     defaultValue: 0
+    //   }
+    // });
   };
   return Reservation;
 };
