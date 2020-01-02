@@ -112,17 +112,17 @@
                 <img class='activator' src='{{imgUrl}}'>
               </div>
               <div class="card-content">
-                <form method="get" action="/client">
+                <form method="get" action="/client" id="stripe-form">
 
                   <input id="roomCost" name="roomCost" type="hidden" value='{{roomCost}}'>
                   <input id="roomId" name="roomId" type="hidden" value='{{id}}'>
                   <input id="roomClientId" name="roomClientId" type="hidden" value='{{ClientId}}'>
                   <input id="beginDate" name="beginDate" type="hidden" value='{{BeginDate}}'>
-                  <input id="endDatee" name="endDate" type="hidden" value='{{EndDate}}'>
+                  <input id="endDate" name="endDate" type="hidden" value='{{EndDate}}'>
 
 
-                  <span class="card-title activator grey-text text-darken-4"> {{roomType}} <button
-                      class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit" id="roomPicked"
+                  <span class="card-title activator grey-text text-darken-4"> {{roomType}} <button data-value="{{id}}"
+                      id="roomPicked" class="btn waves-effect waves-light right" value='{{roomCost}}' type="submit"
                       name="action">Submit
                       <i class="material-icons right">send</i>
                     </button></span>
@@ -152,21 +152,26 @@
         <script>
 
           $('#roomPicked').on('click', function () {
+            var storage = window.sessionStorage;
             console.log("CALCULATE TOTAL");
-
-
             var priceOfRoom = $(this).val();
-            console.log(priceOfRoom);
-            var newReservation = JSON.parse(sessionStorage.getItem('clientReservation'));
+
+
+            var button = document.getElementById('roomPicked');
+            var roomId = button.getAttribute("data-value");
+
+
+            var newReservation = JSON.parse(storage.getItem('clientReservation'));
             var numOfNights = newReservation.NumberofNights;
-            console.log(numOfNights);
+
             var totalCost = priceOfRoom * numOfNights;
-            console.log(totalCost);
+
 
             var reservationTotalCost = {
+              roomId: roomId,
               totalCost: totalCost
             }
-            sessionStorage.setItem('clientReservationTotalCost', JSON.stringify(reservationTotalCost));
+            storage.setItem('clientReservationTotalCost', JSON.stringify(reservationTotalCost));
 
           });
 

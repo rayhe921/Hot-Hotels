@@ -34,7 +34,7 @@ $(document).ready(function() {
         });
 
         var button = $("<button/>", {
-          text: "BOOK THIS ROOM", //set text 1 to 10
+          text: "BOOK THIS ROOM",
           value: data[i].roomCost,
           class: "btn"
         });
@@ -91,7 +91,6 @@ $(document).ready(function() {
         var chosenRoomBtn = $(this).val();
         totalNights = 3;
         var totalCost = chosenRoomBtn * totalNights;
-        console.log("testing function Total Cost");
         console.log(totalCost);
         //navigate to payment page
         window.location = "client";
