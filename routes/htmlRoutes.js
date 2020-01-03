@@ -25,6 +25,28 @@ module.exports = function(app) {
     res.render("thankyou");
   });
 
+  // app.get("/charge", function(req, res) {
+  //   var amount = req.query.amount; // GET THE AMOUNT FROM THE GET REQUEST
+
+  //   var stripeToken = "CUSTOM_PAYMENT_TOKEN";
+
+  //   var charge = stripe.charges.create(
+  //     {
+  //       amount: amount, // amount in cents, again
+  //       currency: "usd",
+  //       source: stripeToken,
+  //       description: "Example charge"
+  //     },
+  //     function(err, charge) {
+  //       if (err && err.type === "StripeCardError") {
+  //         res.json(err);
+  //       } else {
+  //         res.json(charge);
+  //       }
+  //     }
+  //   );
+  // });
+
   app.get("/rooms", function(req, res) {
     //moment conversion script
     var BeginDate = req.query.beginDate;
