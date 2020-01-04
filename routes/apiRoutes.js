@@ -1,4 +1,5 @@
 var db = require("../models");
+var keys = require("../keys")
 const stripe = require("stripe")(process.env.STRIP_KEY);
 
 module.exports = function(app) {
