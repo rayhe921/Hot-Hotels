@@ -128,12 +128,13 @@
     <script>
 
       $(document).ready(function () {
+        var storage = window.sessionStorage;
 
 
         if (typeof (Storage) !== "undefined") {
 
-          var newReservation = JSON.parse(sessionStorage.getItem('clientReservation'));
-          var newClientReservationTotalCost = JSON.parse(sessionStorage.getItem('clientReservationTotalCost'));
+          var newReservation = JSON.parse(storage.getItem('clientReservation'));
+          var newClientReservationTotalCost = JSON.parse(storage.getItem('clientReservationTotalCost'));
 
           var numOfNights = newReservation.NumberofNights;
           var checkIn = newReservation.BeginningDate;

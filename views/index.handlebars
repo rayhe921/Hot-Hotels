@@ -139,6 +139,8 @@
 
   $('#DatesEntered').on('click', function () {
 
+    var storage = window.sessionStorage;
+
     if ($('#EndDate').val() === "" || $('#BeginDate').val() === "" || $('#Adults').val() === "") {
       // 'rounded' is the class I'm applying to the toast
       M.toast({ html: 'Please complete first!', classes: 'rounded' });
@@ -181,7 +183,7 @@
         date2: date2
       }
 
-      sessionStorage.setItem('clientReservation', JSON.stringify(reservation));
+      storage.setItem('clientReservation', JSON.stringify(reservation));
 
     };
 

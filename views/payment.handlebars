@@ -29,22 +29,26 @@
 
 
 <div class="container">
-  <h2 class="my-4 text-center">Book Your Room Now!</h2>
+  <h3 class="my-4 text-center">Almost booked! Please Enter Your Payment Information</h3>
   <form action="/charge" method="POST" id="payment-form">
     <div class="form-row">
-      <input type="text" name="first_name" id="firstName" class="form-control mb-3 StripeElement StripeElement--empty"
+      <input type="text" name="firstName" id="firstName" class="form-control mb-3 StripeElement StripeElement--empty"
         placeholder="First Name">
-      <input type="text" name="last_name" id="lastName" class="form-control mb-3 StripeElement StripeElement--empty"
+      <input type="text" name="lastName" id="lastName" class="form-control mb-3 StripeElement StripeElement--empty"
         placeholder="Last Name">
       <input type="email" name="email" id="email" class="form-control mb-3 StripeElement StripeElement--empty"
         placeholder="Email Address">
+      <input type="hidden" name="amountInDollars" value="{{totalCost}}" id="amountInDollars"
+        data-stripe="amountInDollars">
+
+
       <div id="card-element" class="form-control">
         <!-- a Stripe Element will be inserted here. -->
       </div>
       <!-- Used to display form errors -->
       <div id="card-errors" role="alert"></div>
     </div>
-    <button class="submit" id="submitPayment">Submit Payment</button>
+    <button class="submit" value="{{totalCost}}" data-amount="{{totalCost}}" id="submitPayment">Submit Payment</button>
 
   </form>
 </div>
