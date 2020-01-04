@@ -1,5 +1,5 @@
 var db = require("../models");
-const stripe = require("stripe")("sk_test_c9FfxLCFgbd0z459pCweEIKx00DqdPgiHq");
+const stripe = require("stripe")(process.env.STRIP_KEY);
 
 module.exports = function(app) {
   app.get("/api/rooms", function(req, res) {
