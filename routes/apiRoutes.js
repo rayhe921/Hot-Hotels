@@ -28,9 +28,9 @@ module.exports = function(app) {
         description: "Example charge",
         source: token
       });
-      // res.json({ charge });
-      res.render("thankyou");
+      res.json({ charge });
     })();
+    res.render("thankyou");
   });
 
   app.post("/client", function(req, res) {
