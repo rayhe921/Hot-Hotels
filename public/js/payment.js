@@ -50,7 +50,7 @@ $(document).ready(function() {
     //   }
   };
 
-  var stripe = Stripe("pk_test_8vZwzFImJVjcBJsi995sIvQN00YLWz7ctd");
+  var stripe = Stripe(process.env.STRIP_KEY);
 
   // Create an instance of Elements
   var elements = stripe.elements();
