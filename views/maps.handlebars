@@ -85,7 +85,8 @@
             // Initialize and add the map
 
             var marker;
-
+            var keys = require(".")
+            var googlemap = new Googlemap(keys.googlemap)
             function initMap() {
                 var map = new google.maps.Map(document.getElementById('map'), {
                     zoom: 16,
@@ -111,7 +112,7 @@
             }
         </script>
         <script async defer
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA7ivLKWvviw3NkwrQXHGXebZpBwdExyes&callback=initMap">
+            src="https://maps.googleapis.com/maps/api/js?key=" + googlemap + "&callback=initMap">
             </script>
         <br>
 
