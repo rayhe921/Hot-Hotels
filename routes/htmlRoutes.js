@@ -2,6 +2,8 @@ var db = require("../models");
 var Op = require("sequelize").Op;
 var moment = require("moment");
 moment().format();
+var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
+var google = require("google")(process.env.GOOGLEMAP_KEY);
 
 module.exports = function(app) {
   app.get("/home", function(req, res) {
@@ -9,8 +11,22 @@ module.exports = function(app) {
   });
 
   app.get("/payment", function(req, res) {
-    //var roomSelection = this.value;
     res.render("payment");
+  });
+
+  app.post("/charge", function(req, res) {
+    //var totalCost = req.query.totalCost;
+    const token = req.body.stripeToken; // Using Express
+    (async () => {
+      const charge = await stripe.charges.create({
+        amount: "200",
+        currency: "usd",
+        description: "Example charge",
+        source: token
+      });
+      res.json({ charge });
+    })();
+    res.render("thankyou");
   });
 
   app.get("/client", function(req, res) {
@@ -20,32 +36,6 @@ module.exports = function(app) {
   app.get("/maps", function(req, res) {
     res.render("maps");
   });
-
-  app.get("/thankyou", function(req, res) {
-    res.render("thankyou");
-  });
-
-  // app.get("/charge", function(req, res) {
-  //   var amount = req.query.amount; // GET THE AMOUNT FROM THE GET REQUEST
-
-  //   var stripeToken = "CUSTOM_PAYMENT_TOKEN";
-
-  //   var charge = stripe.charges.create(
-  //     {
-  //       amount: amount, // amount in cents, again
-  //       currency: "usd",
-  //       source: stripeToken,
-  //       description: "Example charge"
-  //     },
-  //     function(err, charge) {
-  //       if (err && err.type === "StripeCardError") {
-  //         res.json(err);
-  //       } else {
-  //         res.json(charge);
-  //       }
-  //     }
-  //   );
-  // });
 
   app.get("/rooms", function(req, res) {
     //moment conversion script

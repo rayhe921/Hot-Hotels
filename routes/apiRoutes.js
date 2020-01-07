@@ -1,6 +1,4 @@
 var db = require("../models");
-var keys = require("../keys")
-const stripe = require("stripe")(process.env.STRIP_KEY);
 
 module.exports = function(app) {
   app.post("/reservation", function(req, res) {
@@ -18,20 +16,6 @@ module.exports = function(app) {
       .catch(function(err) {
         console.log(err, req.body.checkIn);
       });
-  });
-
-  app.post("/charge", function(req, res) {
-    const token = req.body.stripeToken; // Using Express
-    (async () => {
-      const charge = await stripe.charges.create({
-        amount: 999,
-        currency: "usd",
-        description: "Example charge",
-        source: token
-      });
-      res.json({ charge });
-    })();
-    res.render("thankyou");
   });
 
   app.post("/client", function(req, res) {
