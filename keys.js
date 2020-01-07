@@ -1,9 +1,9 @@
-console.log('this is loaded');
+console.log("this is loaded");
 
 exports.stripe = {
-  keys: process.env.STRIPE,
+  id: process.env.STRIPE_PUBLISHABLE_KEY
 };
 
 exports.googlemap = {
-    keys: process.env.GOOGLEMAP_KEY
+  keys: process.env.GOOGLEMAP_KEY
 };
