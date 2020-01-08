@@ -38,17 +38,14 @@
         placeholder="Last Name">
       <input type="email" name="email" id="email" class="form-control mb-3 StripeElement StripeElement--empty"
         placeholder="Email Address">
-      <input type="hidden" name="amountInDollars" value="{{totalCost}}" id="amountInDollars"
-        data-stripe="amountInDollars">
-
-
+      <input type="hidden" name="amountInDollars" value="1" id="amountInDollars" data-stripe="amountInDollars">
       <div id="card-element" class="form-control">
         <!-- a Stripe Element will be inserted here. -->
       </div>
       <!-- Used to display form errors -->
       <div id="card-errors" role="alert"></div>
     </div>
-    <button class="submit" value="{{totalCost}}" data-amount="{{totalCost}}" id="submitPayment">Submit Payment</button>
+    <button class="submit" id="submitPayment">Submit Payment</button>
 
   </form>
 </div>
@@ -152,9 +149,9 @@
 
       API.saveClient(client);
 
-      $firstName.val("");
+      /*$firstName.val("");
       $lastName.val("");
-      $email.val("");
+      $email.val("");*/
 
 
       stripe.createToken(card).then(function (result) {
@@ -177,6 +174,19 @@
       hiddenInput.setAttribute("name", "stripeToken");
       hiddenInput.setAttribute("value", token.id);
       form.appendChild(hiddenInput);
+
+
+      var hiddenInputCost = document.createElement("input");
+      hiddenInputCost.setAttribute("type", "hidden");
+      hiddenInputCost.setAttribute("name", "costInput");
+      var totalCost = newClientReservationTotalCost.totalCost;
+      console.log("xhthfcgadf", totalCost);
+      hiddenInputCost.setAttribute("value", totalCost);
+      form.appendChild(hiddenInputCost);
+
+
+
+
       // Submit the form
       form.submit();
     }
