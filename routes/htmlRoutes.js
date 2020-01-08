@@ -2,7 +2,6 @@ var db = require("../models");
 var Op = require("sequelize").Op;
 var moment = require("moment");
 moment().format();
-//var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 module.exports = function(app) {
   app.get("/home", function(req, res) {
     res.render("index");
@@ -46,18 +45,19 @@ module.exports = function(app) {
     var date2 = moment(CheckOutUTC);
     NumberofNights = date2.diff(date1, "days");
 
-    // TODO: use moment to prepare endDate and startDate
     var dateQuery = {};
     dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
     db.Room.findAll({
       include: [
         {
           model: db.Occupancy,
+          required: false,
           where: {
             date: dateQuery
           }
         }
-      ]
+      ],
+      where: db.sequelize.where(db.sequelize.col("Occupancies.Id"), "IS", null)
     }).then(function(dbRooms) {
       res.render("rooms", {
         rooms: dbRooms,

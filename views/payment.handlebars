@@ -91,12 +91,8 @@
     email = storage.getItem("email");
     document.getElementById("email").value = email;
 
-    var newClientReservationTotalCost = JSON.parse(
-      storage.getItem("clientReservationTotalCost")
-    );
 
-    var totalCost = newClientReservationTotalCost.totalCost;
-    console.log(totalCost);
+    //console.log(totalCost);
 
 
     var stripe = Stripe("pk_test_8vZwzFImJVjcBJsi995sIvQN00YLWz7ctd");
@@ -176,15 +172,17 @@
       form.appendChild(hiddenInput);
 
 
+      var newClientReservationTotalCost = JSON.parse(
+        storage.getItem("clientReservationTotalCost")
+      );
       var hiddenInputCost = document.createElement("input");
       hiddenInputCost.setAttribute("type", "hidden");
       hiddenInputCost.setAttribute("name", "costInput");
       var totalCost = newClientReservationTotalCost.totalCost;
+      console.log(totalCost);
       console.log("xhthfcgadf", totalCost);
       hiddenInputCost.setAttribute("value", totalCost);
       form.appendChild(hiddenInputCost);
-
-
 
 
       // Submit the form
