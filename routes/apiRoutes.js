@@ -1,4 +1,5 @@
 var db = require("../models");
+var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = function(app) {
   app.post("/reservation", function(req, res) {
@@ -32,5 +33,25 @@ module.exports = function(app) {
       .catch(function(err) {
         console.log(err, req.body.firstName);
       });
+  });
+
+  app.post("/charge", function(req, res) {
+    console.log("  nb  nb n n   n ", req.body);
+    var totalCost = req.body.costInput;
+
+    console.log("here", totalCost);
+
+    const token = req.body.stripeToken; // Using Express
+
+    (async () => {
+      const charge = await stripe.charges.create({
+        amount: totalCost,
+        currency: "usd",
+        description: "Example charge",
+        source: token
+      });
+      res.json({ charge });
+    })();
+    res.render("thankyou");
   });
 };
