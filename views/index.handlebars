@@ -65,6 +65,14 @@
       <a class="carousel-item" href="#five!"><img
           src="https://pix10.agoda.net/geo/city/3687/1_3687_02.jpg?s=1920x822"></a>
     </div>
+
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+
+
     <form method="get" action="/rooms">
       <div class="row" id="Reserve">
         <h3>Let's get some dates</h3>
@@ -110,9 +118,6 @@
 
 </div>
 </div>
-
-<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 <script>
 
   $(document).ready(function () {
@@ -127,7 +132,22 @@
   });
 
   $(document).ready(function () {
-    $('.datepicker').datepicker();
+    //  $('.datepicker').datepicker();
+
+
+    var dateToday = new Date();
+    var dates = $("#BeginDate, #EndDate").datepicker({
+      defaultDate: "+1w",
+      changeMonth: true,
+      numberOfMonths: 3,
+      minDate: dateToday,
+      onSelect: function (selectedDate) {
+        var option = this.id == "BeginDate" ? "minDate" : "maxDate"
+      }
+    });
+
+
+
   });
 
   var datecheckarr = [];
