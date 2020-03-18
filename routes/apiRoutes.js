@@ -1,6 +1,8 @@
 var db = require("../models");
+var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
 
 module.exports = function(app) {
+  // Post Reservation record to database
   app.post("/reservation", function(req, res) {
     db.Reservation.create({
       checkIn: req.body.checkIn,
@@ -18,6 +20,7 @@ module.exports = function(app) {
       });
   });
 
+  // Post Client record to database
   app.post("/client", function(req, res) {
     db.Client.create({
       firstName: req.body.firstName,
@@ -32,5 +35,22 @@ module.exports = function(app) {
       .catch(function(err) {
         console.log(err, req.body.firstName);
       });
+  });
+
+  // Post Stripe Charge Payment to Stripe
+  app.post("/charge", function(req, res) {
+    var totalCost = req.body.costInput;
+    const token = req.body.stripeToken; // Using Express
+
+    (async () => {
+      const charge = await stripe.charges.create({
+        amount: totalCost,
+        currency: "usd",
+        description: "Example charge",
+        source: token
+      });
+      res.json({ charge });
+    })();
+    res.render("thankyou");
   });
 };

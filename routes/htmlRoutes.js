@@ -2,9 +2,6 @@ var db = require("../models");
 var Op = require("sequelize").Op;
 var moment = require("moment");
 moment().format();
-var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-// var google = require("google")(process.env.GOOGLEMAP_KEY);
-
 module.exports = function(app) {
   app.get("/home", function(req, res) {
     res.render("index");
@@ -12,21 +9,6 @@ module.exports = function(app) {
 
   app.get("/payment", function(req, res) {
     res.render("payment");
-  });
-
-  app.post("/charge", function(req, res) {
-    //var totalCost = req.query.totalCost;
-    const token = req.body.stripeToken; // Using Express
-    (async () => {
-      const charge = await stripe.charges.create({
-        amount: "200",
-        currency: "usd",
-        description: "Example charge",
-        source: token
-      });
-      res.json({ charge });
-    })();
-    res.render("thankyou");
   });
 
   app.get("/client", function(req, res) {
@@ -63,18 +45,19 @@ module.exports = function(app) {
     var date2 = moment(CheckOutUTC);
     NumberofNights = date2.diff(date1, "days");
 
-    // TODO: use moment to prepare endDate and startDate
     var dateQuery = {};
     dateQuery[Op.notBetween] = [CheckInDate, CheckOutDate];
     db.Room.findAll({
       include: [
         {
           model: db.Occupancy,
+          required: false,
           where: {
             date: dateQuery
           }
         }
-      ]
+      ],
+      where: db.sequelize.where(db.sequelize.col("Occupancies.Id"), "IS", null)
     }).then(function(dbRooms) {
       res.render("rooms", {
         rooms: dbRooms,
