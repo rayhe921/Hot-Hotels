@@ -3,7 +3,7 @@ var Op = require("sequelize").Op;
 var moment = require("moment");
 moment().format();
 var stripe = require("stripe")(process.env.STRIPE_SECRET_KEY);
-var google = require("google")(process.env.GOOGLEMAP_KEY);
+// var google = require("google")(process.env.GOOGLEMAP_KEY);
 
 module.exports = function(app) {
   app.get("/home", function(req, res) {
