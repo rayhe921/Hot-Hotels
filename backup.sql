@@ -29,7 +29,7 @@ CREATE TABLE `clients` (
   `email` varchar(255) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email` (`email`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -57,10 +57,10 @@ CREATE TABLE `occupancies` (
   `RoomId` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `ClientId` (`ClientId`),
-  KEY `RoomId` (`RoomId`),
-  CONSTRAINT `occupancies_ibfk_1` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
-  CONSTRAINT `occupancies_ibfk_2` FOREIGN KEY (`RoomId`) REFERENCES `rooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `RoomId` (`RoomId`)
+  -- CONSTRAINT `occupancies_ibfk_1` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE,
+  -- CONSTRAINT `occupancies_ibfk_2` FOREIGN KEY (`RoomId`) REFERENCES `rooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -89,13 +89,13 @@ CREATE TABLE `reservations` (
   `ClientId` int(11) DEFAULT '0',
   `OccupancyId` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
-  KEY `RoomId` (`RoomId`),
-  KEY `ClientId` (`ClientId`),
-  KEY `OccupancyId` (`OccupancyId`),
-  CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`RoomId`) REFERENCES `rooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
-  CONSTRAINT `reservations_ibfk_3` FOREIGN KEY (`OccupancyId`) REFERENCES `occupancies` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `RoomId2` (`RoomId`),
+  KEY `ClientId2` (`ClientId`),
+  KEY `OccupancyId1` (`OccupancyId`)
+  -- CONSTRAINT `reservations_ibfk_1` FOREIGN KEY (`RoomId`) REFERENCES `rooms` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  -- CONSTRAINT `reservations_ibfk_2` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE SET NULL ON UPDATE CASCADE,
+  -- CONSTRAINT `reservations_ibfk_3` FOREIGN KEY (`OccupancyId`) REFERENCES `occupancies` (`id`) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -122,9 +122,9 @@ CREATE TABLE `rooms` (
   `roomCost` int(11) NOT NULL,
   `ClientId` int(11) DEFAULT NULL,
   PRIMARY KEY (`id`),
-  KEY `ClientId` (`ClientId`),
-  CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  KEY `ClientId3` (`ClientId`)
+  -- CONSTRAINT `rooms_ibfk_1` FOREIGN KEY (`ClientId`) REFERENCES `clients` (`id`) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=25 DEFAULT CHARSET=utf8 COLLATE=utf8_general_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
