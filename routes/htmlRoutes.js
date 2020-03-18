@@ -3,6 +3,10 @@ var Op = require("sequelize").Op;
 var moment = require("moment");
 moment().format();
 module.exports = function(app) {
+  app.get("/", function(req, res) {
+    res.render("intro");
+  });
+  
   app.get("/home", function(req, res) {
     res.render("index");
   });
