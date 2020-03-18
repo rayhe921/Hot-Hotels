@@ -1,9 +1,15 @@
 module.exports = function(sequelize, DataTypes) {
-  var Reservation = sequelize.define("Reservation", {
-    checkIn: { type: DataTypes.DATE, allowNull: false },
-    checkOut: { type: DataTypes.DATE, allowNull: false },
-    totalCost: { type: DataTypes.INTEGER, allowNull: false }
-  });
+  var Reservation = sequelize.define(
+    "Reservation",
+    {
+      checkIn: { type: DataTypes.DATE, allowNull: false },
+      checkOut: { type: DataTypes.DATE, allowNull: false },
+      totalCost: { type: DataTypes.INTEGER, allowNull: false }
+    },
+    {
+      timestamps: false
+    }
+  );
 
   Reservation.associate = function(models) {
     //Associating Reservation with room via foreign key

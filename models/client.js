@@ -1,29 +1,35 @@
 module.exports = function(sequelize, DataTypes) {
-  var Client = sequelize.define("Client", {
-    firstName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 15]
+  var Client = sequelize.define(
+    "Client",
+    {
+      firstName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 15]
+        }
+      },
+      lastName: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        validate: {
+          len: [1, 15]
+        }
+      },
+      email: {
+        type: DataTypes.STRING,
+        allowNull: false,
+        unique: false,
+        validate: {
+          isEmail: true,
+          notEmpty: true
+        }
       }
     },
-    lastName: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      validate: {
-        len: [1, 15]
-      }
-    },
-    email: {
-      type: DataTypes.STRING,
-      allowNull: false,
-      unique: false,
-      validate: {
-        isEmail: true,
-        notEmpty: true
-      }
+    {
+      timestamps: false
     }
-  });
+  );
 
   Client.associate = function(models) {
     // Associating Client with Room
