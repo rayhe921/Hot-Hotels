@@ -1,5 +1,8 @@
 # Hot Hotel & Spa Site
 
+# Link to Site:
+https://thawing-sierra-68759.herokuapp.com/
+
 This is a website for customers to book their reservations into the Hot Hotel & Spa. The site uses two different APIs, one for collecting credit card information and other for the a google maps plug. The site comprised of six different routes the user is able to take:
 
 * /home
